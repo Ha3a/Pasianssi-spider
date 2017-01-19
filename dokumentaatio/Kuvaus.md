@@ -1,5 +1,5 @@
 ###Kuvaus
-Ohjelma tulee toteuttamaan korttipelin, perinteisen tai spiderpasianssin, ehk‰ molemmat jos aika riitt‰‰.
+Ohjelma tulee toteuttamaan korttipelin, perinteisen tai spiderpasianssin, ehk‰ molemmat jos aika riitt‰‰. Mik‰li tulee molemmat niin alussa valitaan kumpi.
 K‰yttˆliittym‰ tulee tummentamaan valitun kortin ja sen j‰lkeen k‰ytt‰j‰ voi yritt‰‰ siirt‰‰ korttia klickaamalla toista sijaintia.
 Jos siirto on sallittu kortti siirtyy, muuten maalaus kortista katoaa sek‰ siirrot kasvat yhdell‰.
 
