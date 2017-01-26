@@ -11,4 +11,4 @@ Jos siirto on sallittu kortti siirtyy, muuten maalaus kortista katoaa sekä siirr
 6. Siirtojen laskeminen
 
 
-![Alt text](dokumentaatio/lkaavio.png)
+![Alt text](lkaavio.png)
