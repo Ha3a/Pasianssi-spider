@@ -6,7 +6,8 @@
 package pasianssi.pasianssi;
 
 /**
- *Kortti luokka yksittäiselle kortille
+ * Kortti luokka yksittäiselle kortille
+ *
  * @author Harri
  */
 public class Kortti {
@@ -40,20 +41,16 @@ public class Kortti {
     private final int kortinArvo; // 1-13
     private final int maanArvo; // 1-4
 
-    
     //Käytetty konstruktori
     public Kortti(int pakkaArvo) {
-        if ((pakkaArvo < 1 || pakkaArvo > 52)) {
-            throw new IllegalArgumentException("Virheellinen arvo");
-        }
+//        if ((pakkaArvo < 1 || pakkaArvo > 52)) {
+//            throw new IllegalArgumentException("Virheellinen arvo");
+//        }
         this.pakkaArvo = pakkaArvo;
         this.maanArvo = pakkaArvoMaanArvoksi(pakkaArvo);
         this.kortinArvo = pakkaArvoKortinArvoksi(pakkaArvo);
 
     }
-
-    
-   
 
     //gettereitä
     public int getPakkaArvo() {
@@ -79,7 +76,7 @@ public class Kortti {
     //PakkaArvon muuntaminen kortin arvoksi
     public static int pakkaArvoKortinArvoksi(int pakkaArvo) {
         int kortinArvo = (pakkaArvo % 13);
-        if(kortinArvo == 0){
+        if (kortinArvo == 0) {
             kortinArvo = 13;
         }
 
@@ -89,7 +86,9 @@ public class Kortti {
     //Kortin tulostus lyhyessä muodossa esimerkiksi ruutu 10 on 10C
     public String toString() {
         String korttiArvoTekstina;
-        if (kortinArvo > 1 && kortinArvo < 11) {
+        if (kortinArvo == 1) {
+            korttiArvoTekstina = getKortinArvonNimi().substring(0, 1);
+        } else if (kortinArvo <= 10) {
             korttiArvoTekstina = getKortinArvonNimi();
         } else {
             korttiArvoTekstina = getKortinArvonNimi().substring(0, 1);
@@ -109,12 +108,18 @@ public class Kortti {
 
     //KortinArvon ja maanArvon muuntaminen pakkaArvoksi
     public static int pakkaArvoksi(int kortinArvo, int maanArvo) {
-        if (kortinArvo < 1 || kortinArvo > 13) {
-            throw new IllegalArgumentException("Virheellinen kortin arvo");
-        }
-        if (maanArvo < 1 || maanArvo > 4) {
-            throw new IllegalArgumentException("Virheellinen maan arvo");
-        }
+//        if (1 > kortinArvo) {
+//            throw new IllegalArgumentException("Virheellinen kortin arvo");
+//        }
+//        if (kortinArvo > 13) {
+//            throw new IllegalArgumentException("Virheellinen kortin arvo");
+//        }
+//        if (maanArvo < 1) {
+//            throw new IllegalArgumentException("Virheellinen maan arvo");
+//        }
+//        if (maanArvo > 4) {
+//            throw new IllegalArgumentException("Virheellinen maan arvo");
+//        }
         int pakkaArvo = (13 * (maanArvo - 1)) + kortinArvo;
         return pakkaArvo;
     }

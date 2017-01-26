@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
+
 /**
  *
  * @author Harri
@@ -20,6 +21,8 @@ public class KorttiTest {
 
     public KorttiTest() {
     }
+
+
 
     @BeforeClass
     public static void setUpClass() {
@@ -44,6 +47,8 @@ public class KorttiTest {
         }
     }
 
+
+
     //Antaako getPakkaArvo oikean arvon
     @Test
     public void testGetPakkaArvo() {
@@ -52,7 +57,6 @@ public class KorttiTest {
         assertEquals(1, i);
     }
 
-    
     //Sama max valuella
     @Test
     public void testGetPakkaArvoMax() {
@@ -69,7 +73,6 @@ public class KorttiTest {
         assertEquals(1, i);
     }
 
-    
     //Sama max valuella
     @Test
     public void testGetMaanArvoMax() {
@@ -86,7 +89,6 @@ public class KorttiTest {
         assertEquals("Hearts", nimi);
     }
 
-    
     //Sama max valuella
     @Test
     public void testGetKortinMaanNimiMax() {
@@ -119,7 +121,6 @@ public class KorttiTest {
         assertEquals("Ace", nimi);
     }
 
-    
     //Tulostaako kortti oikean nimen
     @Test
     public void testGetKortinArvonNimiMax() {
@@ -128,7 +129,6 @@ public class KorttiTest {
         assertEquals("King", nimi);
     }
 
-    
     //Muuntuuko pakkaArvo kortinArvoksi oikein
     @Test
     public void testpakkaArvoKortinArvoksi() {
@@ -143,6 +143,20 @@ public class KorttiTest {
         Kortti kortti = new Kortti(1);
         String nimi = kortti.toString();
         assertEquals("AH", nimi);
+    }
+
+    @Test
+    public void testToStringNumeroKorti() {
+        Kortti kortti = new Kortti(10);
+        String nimi = kortti.toString();
+        assertEquals("10H", nimi);
+    }
+
+    @Test
+    public void testToStringAatelinen() {
+        Kortti kortti = new Kortti(13);
+        String nimi = kortti.toString();
+        assertEquals("KH", nimi);
     }
 
     //Toimiiko pitkä tulostus oikein
