@@ -9,3 +9,6 @@ Jos siirto on sallittu kortti siirtyy, muuten maalaus kortista katoaa sekä siirr
 4. Kortin siirtäminen
 5. Korttien siirtäminen pois pelialueelta
 6. Siirtojen laskeminen
+
+
+![Alt text](/lkaavio.png)
