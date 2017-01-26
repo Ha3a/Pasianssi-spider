@@ -6,4 +6,5 @@ Kortteja kasoja ja jakaminen ehkä myös siirot
 
 ###Dokumentaatio
 
-[aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+[Aiheen kuvaus](dokumentaatio/Kuvaus.md)
+[Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)
