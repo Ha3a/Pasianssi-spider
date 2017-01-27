@@ -5,10 +5,15 @@ Aihe: Pasianssi / Spiderpasianssi, korttipeli jossa j‰rjestell‰‰n kortteja kunne
 K‰ytt‰j‰t: Pelaaja
 
 Pelaajan toiminnut:
+
 -Pelin aloittaminen
 	-Mahdollisesti pelin valinta
+
 -Kortin siirt‰minen
-	-Jos laillinen siirto kortti siirtyy, muuten lis‰t‰‰n siirto ja kortti pysyy paikallaan
+	-K‰dest‰ peliin
+	-Pinosta toiseen pinoon
+	-Pinosta yl‰pinoihin
+
 -High scorejen tarkistaminen
 
 
