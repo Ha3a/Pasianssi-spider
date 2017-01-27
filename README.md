@@ -1,10 +1,11 @@
 # Pasianssi-spider
 
-Pasianssi tai spiderpasianssi ehkä molemmat..
-Kortteja kasoja ja jakaminen ehkä myös siirot
+Pasianssi
+Pelissä järjestellään kortteja pinoihin ja avattua piilotetut kortit
+Pelin voittaa kun on saannut kortit siirrettyä pois pelistä
 
 
 ###Dokumentaatio
 
-[Aiheen kuvaus](dokumentaatio/Kuvaus.md)
+[Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
 [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)

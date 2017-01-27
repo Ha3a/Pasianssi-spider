@@ -87,9 +87,10 @@ public class Kortti {
      * PakkaArvon muuntaminen kortin arvoksi.
      */
     public static int pakkaArvoKortinArvoksi(int pakkaArvo) {
-        int kortinArvo = (pakkaArvo % 13);
+        int k = KUNINGAS;
+        int kortinArvo = (pakkaArvo % k);
         if (kortinArvo == 0) {
-            kortinArvo = 13;
+            kortinArvo = k;
         }
 
         return kortinArvo;
@@ -146,7 +147,7 @@ public class Kortti {
     /*
      * PakkaArvosta muunto maa arvoksi.
      */
-    public static final int pakkaArvoMaanArvoksi(int pakkaArvo) {
+    public static int pakkaArvoMaanArvoksi(int pakkaArvo) {
         int maanArvo = pakkaArvo / 13;
         if (pakkaArvo % 13 != 0) {
             maanArvo++;
