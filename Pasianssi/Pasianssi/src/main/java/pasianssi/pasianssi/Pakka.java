@@ -10,5 +10,5 @@ package pasianssi.pasianssi;
  * @author Harri
  */
 public class Pakka {
-    
+
 }

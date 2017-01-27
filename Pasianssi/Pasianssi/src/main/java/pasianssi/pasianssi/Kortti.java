@@ -1,47 +1,55 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pasianssi.pasianssi;
 
 /**
- * Kortti luokka yksittäiselle kortille
+ * Kortti luokka yksittäiselle kortille.
  *
  * @author Harri
  */
 public class Kortti {
 
-    //Mikä maaID on mikäkin maa
-    //Punaiset ovat parittomia
+    /**
+     *
+     * maa idt.
+     */
     public static final int HERTTA = 1;
     public static final int PATA = 2;
     public static final int RUUTU = 3;
     public static final int RISTI = 4;
 
+    /**
+     * Maitten nimet.
+     */
     private final String[] maittenNimet = new String[]{
         "Hearts", "Spades", "Diamond", "Clubs"
     };
 
-    //Mikä kortti on minkäkin niminen
-    public static final int ASSA = 1;
+    /**
+     * Mikä kortti on minkäkin niminen.
+     */
+    public static final int ASSA = 1; //testi
     public static final int JATKA = 11;
     public static final int KUNIGATAR = 12;
     public static final int KUNINGAS = 13;
 
+    /**
+     * Korttien nimet.
+     */
     private final String[] korttienNimet = new String[]{
-        "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"
+        "Ace", "2", "3", "4", "5", "6",
+        "7", "8", "9", "10", "Jack",
+        "Queen", "King"
     };
 
-    // 1-13 hertta
-    // 14-26 pata
-    // 27-39 ruutu
-    // 40-52 risti
+    /**
+     * 1-13 hertta 14-26 pata 27-39 ruutu 40-52 risti.
+     */
     private final int pakkaArvo; // 1-52
     private final int kortinArvo; // 1-13
     private final int maanArvo; // 1-4
 
-    //Käytetty konstruktori
+    /*
+     * Käytetty konstruktori.
+     */
     public Kortti(int pakkaArvo) {
 //        if ((pakkaArvo < 1 || pakkaArvo > 52)) {
 //            throw new IllegalArgumentException("Virheellinen arvo");
@@ -52,7 +60,9 @@ public class Kortti {
 
     }
 
-    //gettereitä
+    /*
+     *gettereitä.
+     */
     public int getPakkaArvo() {
         return pakkaArvo;
     }
@@ -73,7 +83,9 @@ public class Kortti {
         return korttienNimet[kortinArvo - 1];
     }
 
-    //PakkaArvon muuntaminen kortin arvoksi
+    /*
+     * PakkaArvon muuntaminen kortin arvoksi.
+     */
     public static int pakkaArvoKortinArvoksi(int pakkaArvo) {
         int kortinArvo = (pakkaArvo % 13);
         if (kortinArvo == 0) {
@@ -83,7 +95,10 @@ public class Kortti {
         return kortinArvo;
     }
 
-    //Kortin tulostus lyhyessä muodossa esimerkiksi ruutu 10 on 10C
+    /*
+     * Kortin tulostus lyhyessä muodossa esimerkiksi ruutu 10 on 10C.
+     */
+    @Override
     public String toString() {
         String korttiArvoTekstina;
         if (kortinArvo == 1) {
@@ -100,13 +115,17 @@ public class Kortti {
 
     }
 
-    //Kortin koko nimen tulostus
+    /*
+     * Kortin koko nimen tulostus.
+     */
     public String toStringPitka() {
         String kortinNimi = getKortinMaanNimi() + " " + getKortinArvonNimi();
         return kortinNimi;
     }
 
-    //KortinArvon ja maanArvon muuntaminen pakkaArvoksi
+    /*
+     * KortinArvon ja maanArvon muuntaminen pakkaArvoksi.
+     */
     public static int pakkaArvoksi(int kortinArvo, int maanArvo) {
 //        if (1 > kortinArvo) {
 //            throw new IllegalArgumentException("Virheellinen kortin arvo");
@@ -124,8 +143,10 @@ public class Kortti {
         return pakkaArvo;
     }
 
-    //PakkaArvosta muunto maa arvoksi
-    public static int pakkaArvoMaanArvoksi(int pakkaArvo) {
+    /*
+     * PakkaArvosta muunto maa arvoksi.
+     */
+    public static final int pakkaArvoMaanArvoksi(int pakkaArvo) {
         int maanArvo = pakkaArvo / 13;
         if (pakkaArvo % 13 != 0) {
             maanArvo++;
