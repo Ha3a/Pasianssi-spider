@@ -1,3 +1,6 @@
+/**
+ * Pakkauksessa pasianssi.pasianssi
+ */
 package pasianssi.pasianssi;
 
 /**
@@ -8,8 +11,7 @@ package pasianssi.pasianssi;
 public class Kortti {
 
     /**
-     *
-     * maa idt.
+     * Maa idt. HERTTA on 1, PATA 2, RUUTU 3, RISTI 4.
      */
     public static final int HERTTA = 1;
     public static final int PATA = 2;
@@ -26,7 +28,7 @@ public class Kortti {
     /**
      * Mikä kortti on minkäkin niminen.
      */
-    public static final int ASSA = 1; //testi
+    public static final int ASSA = 1;
     public static final int JATKA = 11;
     public static final int KUNIGATAR = 12;
     public static final int KUNINGAS = 13;
@@ -50,44 +52,44 @@ public class Kortti {
     /*
      * Käytetty konstruktori.
      */
-    public Kortti(int pakkaArvo) {
-//        if ((pakkaArvo < 1 || pakkaArvo > 52)) {
-//            throw new IllegalArgumentException("Virheellinen arvo");
-//        }
-        this.pakkaArvo = pakkaArvo;
-        this.maanArvo = pakkaArvoMaanArvoksi(pakkaArvo);
-        this.kortinArvo = pakkaArvoKortinArvoksi(pakkaArvo);
+    public Kortti(final int uudenKortinPakkaArvo) {
+        if ((uudenKortinPakkaArvo < 1 || uudenKortinPakkaArvo > 52)) {
+            throw new IllegalArgumentException("Virheellinen arvo");
+        }
+        this.pakkaArvo = uudenKortinPakkaArvo;
+        this.maanArvo = pakkaArvoMaanArvoksi(uudenKortinPakkaArvo);
+        this.kortinArvo = pakkaArvoKortinArvoksi(uudenKortinPakkaArvo);
 
     }
 
     /*
      *gettereitä.
      */
-    public int getPakkaArvo() {
+    public final int getPakkaArvo() {
         return pakkaArvo;
     }
 
-    public int getMaanArvo() {
+    public final int getMaanArvo() {
         return maanArvo;
     }
 
-    public String getKortinMaanNimi() {
+    public final String getKortinMaanNimi() {
         return maittenNimet[maanArvo - 1];
     }
 
-    public int getKortinArvo() {
+    public final int getKortinArvo() {
         return kortinArvo;
     }
 
-    public String getKortinArvonNimi() {
+    public final String getKortinArvonNimi() {
         return korttienNimet[kortinArvo - 1];
     }
 
     /*
      * PakkaArvon muuntaminen kortin arvoksi.
      */
-    public static int pakkaArvoKortinArvoksi(int pakkaArvo) {
-        int k = KUNINGAS;
+    public static int pakkaArvoKortinArvoksi(final int pakkaArvo) {
+        int k = 13;
         int kortinArvo = (pakkaArvo % k);
         if (kortinArvo == 0) {
             kortinArvo = k;
@@ -100,7 +102,7 @@ public class Kortti {
      * Kortin tulostus lyhyessä muodossa esimerkiksi ruutu 10 on 10C.
      */
     @Override
-    public String toString() {
+    public final String toString() {
         String korttiArvoTekstina;
         if (kortinArvo == 1) {
             korttiArvoTekstina = getKortinArvonNimi().substring(0, 1);
@@ -119,7 +121,7 @@ public class Kortti {
     /*
      * Kortin koko nimen tulostus.
      */
-    public String toStringPitka() {
+    public final String toStringPitka() {
         String kortinNimi = getKortinMaanNimi() + " " + getKortinArvonNimi();
         return kortinNimi;
     }
@@ -127,7 +129,7 @@ public class Kortti {
     /*
      * KortinArvon ja maanArvon muuntaminen pakkaArvoksi.
      */
-    public static int pakkaArvoksi(int kortinArvo, int maanArvo) {
+    public static int pakkaArvoksi(final int kortinArvo, final int maanArvo) {
 //        if (1 > kortinArvo) {
 //            throw new IllegalArgumentException("Virheellinen kortin arvo");
 //        }
@@ -147,7 +149,7 @@ public class Kortti {
     /*
      * PakkaArvosta muunto maa arvoksi.
      */
-    public static int pakkaArvoMaanArvoksi(int pakkaArvo) {
+    public static int pakkaArvoMaanArvoksi(final int pakkaArvo) {
         int maanArvo = pakkaArvo / 13;
         if (pakkaArvo % 13 != 0) {
             maanArvo++;
