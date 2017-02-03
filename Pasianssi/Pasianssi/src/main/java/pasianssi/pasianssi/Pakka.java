@@ -8,7 +8,6 @@ package pasianssi.pasianssi;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 /**
  *
  * @author Harri
@@ -21,13 +20,13 @@ public class Pakka {
         this.pakka = new ArrayList<>(52);
     }
 
-    public void luoPakka() {
+    public final void luoPakka() {
         if (onkoTyhja()) {
-            pakka.add(new Kortti(1));
-            for (int i = 1; i <= 52; i++) {
+            for (int i = 1; i <= 52;) {
                 pakka.add(new Kortti(i));
+                i++;
             }
-            
+
         }
 
     }
@@ -45,14 +44,21 @@ public class Pakka {
     }
 
     public String tulostaPakka() {
-        String kortit;
-        for (int i = 1; i <= 52; i++) {
-            System.out.print(pakka.get(i) + " ");
-            if (i % 13 == 0) {
-                System.out.println("");
+        String tulosta = "";
+        for (int i = 0; i < pakka.size(); i++) {
+            tulosta = tulosta + pakka.get(i) + " ";
+            if ((i + 1) % 13 == 0) {
+                tulosta = tulosta + "\n";
             }
         }
-        return "";
+
+        return tulosta;
+    }
+
+    public Kortti otaKortti(int index) {
+        Kortti sailytys = pakka.get(index);
+        pakka.remove(index);
+        return sailytys;
     }
 
 }

@@ -49,6 +49,8 @@ public class Kortti {
     private final int kortinArvo; // 1-13
     private final int maanArvo; // 1-4
 
+    private boolean kuvaPuoliYlos = false;
+
     /*
      * Käytetty konstruktori.
      */
@@ -155,6 +157,13 @@ public class Kortti {
             maanArvo++;
         }
         return maanArvo;
+    }
+
+    public final boolean onkoPunainen() {
+        if (maanArvo == 1 || maanArvo == 3) {
+            return true;
+        }
+        return false;
     }
 
 }
