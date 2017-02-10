@@ -12,7 +12,9 @@ import pasianssi.pasianssi.PeliAlusta;
 import pasianssi.pasianssi.Pino;
 
 /**
- * Luokka piirtää kortit pöytään, myös paikat joissa ei ole, mutta tulee kortteja
+ * Luokka piirtää kortit pöytään, myös paikat joissa ei ole, mutta tulee
+ * kortteja
+ *
  * @author Harri
  */
 public class Piirtoalusta extends JPanel {
@@ -34,29 +36,32 @@ public class Piirtoalusta extends JPanel {
         piirraAlaPinot(g);
         piirraYlaPinot(g);
         piirraKortti(g);
+        piirraKortteja(g);
 
     }
 
     /*
     * Piirtää Kääntöpinon
-    */
-    private void piirraKaantoPino(Graphics graphics) {
-        graphics.setColor(Color.red);
-        graphics.fill3DRect(410, 50, 50, 50, true);
+     */
+    private void piirraKaantoPino(Graphics g) {
+        ImageIcon i = new ImageIcon("src\\main\\resources\\kortit\\korttitausta.png");
+        korttik = i.getImage();
+        g.drawImage(korttik, 410, 50, 50, 50, this);
     }
+    
+    
 
     /*
     * Piirtää Kääntöpinosta käännteyt kortit
-    */
+     */
     private void piirraKaannettyPino(Graphics graphics) {
         graphics.setColor(Color.black);
         graphics.fill3DRect(345, 50, 50, 50, true);
     }
 
-    
     /*
     * Piirtää pelialustan alapinot ja niiden kortit
-    */
+     */
     private void piirraAlaPinot(Graphics graphics) {
         int x = 20;
         for (int i = 0; i < 7; i++) {
@@ -66,11 +71,10 @@ public class Piirtoalusta extends JPanel {
         }
     }
 
-    
     /*
     * Piirtää pelialustan yläpinot jonne korttien tulisi siirtyä 
     * jotta peli voitetaan
-    */
+     */
     public void piirraYlaPinot(Graphics graphics) {
         int x = 20;
         for (int i = 0; i < 4; i++) {
@@ -80,11 +84,24 @@ public class Piirtoalusta extends JPanel {
         }
     }
 
-
-    public void piirraKortti(Graphics g){
+    public void piirraKortti(Graphics g) {
         ImageIcon i = new ImageIcon("src\\main\\resources\\kortit\\1.png");
         korttik = i.getImage();
         g.drawImage(korttik, 345, 50, 50, 50, this);
     }
-    
+
+    public void piirraKortteja(Graphics g) {
+
+        Pino pinot[] = ohjain.getAlaPinot();
+        int x = 20;
+
+        for (int a = 0; a < 7; a++) {
+            ImageIcon i = new ImageIcon("src\\main\\resources\\kortit\\" + pinot[a].getKorttiPinosta(pinot[a].pinonKoko() - 1).getPakkaArvo() + ".png");
+            korttik = i.getImage();
+            g.drawImage(korttik, x, 150, 50, 50, this);
+            x = x + 65;
+        }
+
+    }
+
 }

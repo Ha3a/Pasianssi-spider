@@ -94,7 +94,9 @@ public class Main {
 //        }
 
         PeliAlusta peli = new PeliAlusta();
+        peli.jaaKortit();
         Kayttoliittyma pa = new Kayttoliittyma(peli);
+        
         pa.run();
 
     }
