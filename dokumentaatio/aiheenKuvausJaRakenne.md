@@ -1,18 +1,19 @@
 ###Aihem‰‰rittely
 
-Aihe: Pasianssi / Spiderpasianssi, korttipeli jossa j‰rjestell‰‰n kortteja kunnes pystyt‰‰n siirt‰m‰‰n kortit pois peliauleelta.
+Aihe: Pasianssi, korttipeli jossa j‰rjestell‰‰n kortteja kunnes pystyt‰‰n siirt‰m‰‰n kortit yl‰pinoihin jolloin peli p‰‰ttyy.
 
 K‰ytt‰j‰t: Pelaaja
 
 Pelaajan toiminnut:
 
 -Pelin aloittaminen
-	-Mahdollisesti pelin valinta
+	
 
 -Kortin siirt‰minen
 	-K‰dest‰ peliin
 	-Pinosta toiseen pinoon
 	-Pinosta yl‰pinoihin
+	-Pakasta peliin
 
 -High scorejen tarkistaminen
 
@@ -20,9 +21,10 @@ Pelaajan toiminnut:
 
 
 ###Kuvaus
-Ohjelma tulee toteuttamaan korttipelin, perinteisen tai spiderpasianssin, ehk‰ molemmat jos aika riitt‰‰. Mik‰li tulee molemmat niin alussa valitaan kumpi.
-K‰yttˆliittym‰ tulee tummentamaan valitun kortin ja sen j‰lkeen k‰ytt‰j‰ voi yritt‰‰ siirt‰‰ korttia klickaamalla toista sijaintia.
+Ohjelma tulee toteuttamaan korttipelin, perinteisen pasianssin.
+K‰yttˆliittym‰ tulee tummentamaan valitun kortin ja sen j‰lkeen k‰ytt‰j‰ voi yritt‰‰ siirt‰‰ korttia klikkaamalla toista sijaintia.
 Jos siirto on sallittu kortti siirtyy, muuten maalaus kortista katoaa sek‰ siirrot kasvat yhdell‰.
+Peli p‰‰ttyy kun kaikki kortit ovan siirretty ylˆs pinoihin, jotka menev‰t maittain ‰ss‰st‰ kuninkaaseen.
 
 1. Korttien luominen tekstik‰yttˆliittym‰‰n
 2. Korttien jakaminen

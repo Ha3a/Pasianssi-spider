@@ -1,12 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package pasianssi.pasianssi;
 
 /**
- *
+ * Luokka sisältää Pelialustan jonne kortit jaetaan
+ * Luokassa on myös pinot joihin kortit jaetaan ja jonne ne tulisi siirtää
  * @author Harri
  */
 public class PeliAlusta {
@@ -17,6 +13,13 @@ public class PeliAlusta {
     private Pino kaannettavaPakka;
     private Pakka pakka;
 
+    
+    
+    /*
+    * Alustaa pelialustan ja luo pinot, kaantopakat, sekä 
+    * pakan josta kortit jaetaan
+    */
+    
     public PeliAlusta() {
         alaPinot = new Pino[7];
         for (int i = 0; i < alaPinot.length; i++) {
@@ -33,6 +36,11 @@ public class PeliAlusta {
 
     }
 
+    
+    /*
+    * Jakaa kortit pelin alkuun
+    */
+    
     public void jaaKortit() {
         int a = 7;
         int b = 0;
@@ -50,6 +58,11 @@ public class PeliAlusta {
         }
     }
 
+    
+    /*
+    * Gettereitä
+    */
+    
     public Pino[] getAlaPinot() {
         return alaPinot;
     }
@@ -66,6 +79,12 @@ public class PeliAlusta {
         return kaannettavaPakka;
     }
 
+    
+    /*
+    * Ottaa kortin kääntöpakasta ja siirtää sen käännettyyn pakkaan
+    * Mikäli kortit loppuu kääntöpakasta niin kortit siirretään takaisin sinne
+    */
+    
     public void otaKorttiPakasta() {
         if (!kaannettavaPakka.onkoTyhja()) {
             int i = kaannettavaPakka.pinonKoko() - 1;

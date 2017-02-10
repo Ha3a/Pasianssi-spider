@@ -1,17 +1,23 @@
-//package pasianssi.pasianssi;
-//
-///*
-// * To change this license header, choose License Headers in Project Properties.
-// * To change this template file, choose Tools | Templates
-// * and open the template in the editor.
-// */
-///**
-// *
-// * @author Harri
-// */
-//public class Main {
-//
-//    public static void main(String[] args) {
+package domain;
+
+import gui.Kayttoliittyma;
+import gui.Piirtoalusta;
+import pasianssi.pasianssi.Pakka;
+import pasianssi.pasianssi.PeliAlusta;
+import pasianssi.pasianssi.Pino;
+
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/**
+ *
+ * @author Harri
+ */
+public class Main {
+
+    public static void main(String[] args) {
 //        Pakka testi = new Pakka();
 //        Pino eka = new Pino();
 //        System.out.println("" + testi.pakanKoko());
@@ -86,5 +92,10 @@
 //        for (int i = 0; i < 25; i++) {
 //            alusta.otaKorttiPakasta();
 //        }
-//    }
-//}
+
+        PeliAlusta peli = new PeliAlusta();
+        Kayttoliittyma pa = new Kayttoliittyma(peli);
+        pa.run();
+
+    }
+}

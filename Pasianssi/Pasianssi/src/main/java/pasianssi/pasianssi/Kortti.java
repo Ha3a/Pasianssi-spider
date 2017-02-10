@@ -159,6 +159,12 @@ public class Kortti {
         return maanArvo;
     }
 
+    
+    /*
+    * Tarkistetaan onko kortti musta vai punainen
+    * Jos puneinen niin palautetaan true
+    */
+    
     public final boolean onkoPunainen() {
         if (maanArvo == 1 || maanArvo == 3) {
             return true;
