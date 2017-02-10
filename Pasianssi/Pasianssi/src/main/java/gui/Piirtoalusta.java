@@ -19,6 +19,7 @@ public class Piirtoalusta extends JPanel {
 
     private PeliAlusta ohjain;
     private KuvaHakija kuvaHakija;
+    Image korttik;
 
     public Piirtoalusta(PeliAlusta peli) {
         this.ohjain = peli;
@@ -32,6 +33,7 @@ public class Piirtoalusta extends JPanel {
         piirraKaannettyPino(g);
         piirraAlaPinot(g);
         piirraYlaPinot(g);
+        piirraKortti(g);
 
     }
 
@@ -79,4 +81,10 @@ public class Piirtoalusta extends JPanel {
     }
 
 
+    public void piirraKortti(Graphics g){
+        ImageIcon i = new ImageIcon("src\\main\\resources\\kortit\\1.png");
+        korttik = i.getImage();
+        g.drawImage(korttik, 345, 50, 50, 50, this);
+    }
+    
 }
