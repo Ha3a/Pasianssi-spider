@@ -8,4 +8,9 @@ Pelin voittaa kun on saannut kortit siirrettyä pois pelistä
 ###Dokumentaatio
 
 [Aiheen kuvaus](dokumentaatio/aiheenKuvausJaRakenne.md)
+
 [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)
+
+[pit-raportti](dokumentaatio/pit-Raportti/index.html)
+
+[Checkstyle-raportti](dokumentaatio/checkstyle.html)
