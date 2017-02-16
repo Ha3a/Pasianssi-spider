@@ -2,9 +2,9 @@ package domain;
 
 import gui.Kayttoliittyma;
 import gui.Piirtoalusta;
-import pasianssi.pasianssi.Pakka;
-import pasianssi.pasianssi.PeliAlusta;
-import pasianssi.pasianssi.Pino;
+import logiikka.Pakka;
+import logiikka.PeliAlusta;
+import logiikka.Pino;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

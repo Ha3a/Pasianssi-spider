@@ -5,6 +5,8 @@
  */
 package pasianssi.pasianssi;
 
+import logiikka.Pakka;
+import logiikka.Kortti;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

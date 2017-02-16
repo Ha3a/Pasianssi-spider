@@ -1,6 +1,6 @@
 
 
-package pasianssi.pasianssi;
+package logiikka;
 
 import java.util.ArrayList;
 import java.util.Collections;

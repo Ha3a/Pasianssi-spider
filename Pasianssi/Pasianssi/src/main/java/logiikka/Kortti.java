@@ -2,7 +2,7 @@
  * Pakkauksessa pasianssi.pasianssi
  */
 
-package pasianssi.pasianssi;
+package logiikka;
 
 /**
  * Kortti luokka yksittäiselle kortille.
@@ -171,6 +171,14 @@ public class Kortti {
             return true;
         }
         return false;
+    }
+    
+    public void kaannaKortti(){
+        this.kuvaPuoliYlos = true;
+    }
+    
+    public boolean onkoKuvaYlos(){
+        return this.kuvaPuoliYlos;
     }
 
 }

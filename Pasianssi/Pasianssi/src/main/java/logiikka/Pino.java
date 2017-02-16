@@ -1,5 +1,4 @@
-
-package pasianssi.pasianssi;
+package logiikka;
 
 import java.util.ArrayList;
 
@@ -64,6 +63,10 @@ public class Pino {
      */
     public int pinonKoko() {
         return pino.size();
+    }
+
+    public int pinonYlinIndeksi() {
+        return (pino.size() - 1);
     }
 
     public String toString() {

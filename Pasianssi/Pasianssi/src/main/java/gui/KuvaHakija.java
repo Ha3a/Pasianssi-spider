@@ -6,7 +6,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 import javax.imageio.ImageIO;
-import pasianssi.pasianssi.Kortti;
+import logiikka.Kortti;
 
 /**
  * Luokka hakee korteille kuvat

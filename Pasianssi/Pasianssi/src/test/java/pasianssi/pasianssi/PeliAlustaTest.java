@@ -5,6 +5,9 @@
  */
 package pasianssi.pasianssi;
 
+import logiikka.Pino;
+import logiikka.Pakka;
+import logiikka.PeliAlusta;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
