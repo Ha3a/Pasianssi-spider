@@ -1,10 +1,10 @@
-package domain;
+package pasianssi.domain;
 
-import gui.Kayttoliittyma;
-import gui.Piirtoalusta;
-import logiikka.Pakka;
-import logiikka.PeliAlusta;
-import logiikka.Pino;
+import pasianssi.gui.Kayttoliittyma;
+import pasianssi.gui.Piirtoalusta;
+import pasianssi.logiikka.Pakka;
+import pasianssi.logiikka.PeliAlusta;
+import pasianssi.logiikka.Pino;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -12,12 +12,18 @@ import logiikka.Pino;
  * and open the template in the editor.
  */
 /**
- *
+ * Luokka josta ohjelma ajetaan.
+ * Tällä hetkellä testi käytössä.
  * @author Harri
  */
 public class Main {
 
-    public static void main(String[] args) {
+
+    /**
+     * Mainin ja troubleshoottaamisen alku.
+     * @param args 
+     */
+    public static void main(String[] args) {  //testi.
 //        Pakka testi = new Pakka();
 //        Pino eka = new Pino();
 //        System.out.println("" + testi.pakanKoko());
@@ -94,10 +100,20 @@ public class Main {
 //        }
 
         PeliAlusta peli = new PeliAlusta();
+        Pino apinot[] = peli.getAlaPinot();
+        Pino ypinot[] = peli.getYlaPinot();
         peli.jaaKortit();
+        peli.otaKorttiPakasta();
+        peli.siirraKorttiYlaPinoon(apinot[4], ypinot[1]);
+        peli.siirraKorttiYlaPinoon(apinot[5], ypinot[1]);
+        peli.siirraKortteja(apinot[3], apinot[0], 1);
+        peli.kannaKorttiOikeinPain(apinot[3]);
+        peli.kannaKorttiOikeinPain(apinot[4]);
+        peli.kannaKorttiOikeinPain(apinot[5]);
+        
         Kayttoliittyma pa = new Kayttoliittyma(peli);
         
         pa.run();
-
+        
     }
 }

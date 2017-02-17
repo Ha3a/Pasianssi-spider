@@ -1,9 +1,9 @@
-package logiikka;
+package pasianssi.logiikka;
 
 import java.util.ArrayList;
 
 /**
- * Luokka rakentaa pinot joissa kortit on pelialustalla
+ * Luokka rakentaa pinot joissa kortit on pelialustalla.
  *
  * @author Harri
  */
@@ -11,34 +11,47 @@ public class Pino {
 
     private ArrayList<Kortti> pino;
 
+    /**
+     * Luodaan ArrayList.
+     */
     public Pino() {
         this.pino = new ArrayList<>();
     }
 
-    /*
-    * lisätään kortti pinoon
+    /**
+     * lisätään kortti pinoon.
+     *
+     * @param k lisättävä kortti
      */
     public void lisaaPinoon(Kortti k) {
         pino.add(k);
     }
 
-    /*
-    * Poistaa tietyn kortin pinosta
+    /**
+     * Poistaa tietyn kortin pinosta.
+     *
+     * @param k poistettava kortti
      */
     public void poistaTiettyKortti(Kortti k) {
         pino.remove(k);
     }
 
-    /*
-    * Antaa kortin pinosta indeksin mukaan
+    /**
+     * Antaa kortin pinosta indeksin mukaan.
+     *
+     * @param i kortin indeksi
+     * @return indeksin kortti
      */
     public Kortti getKorttiPinosta(int i) {
         Kortti kortti = pino.get(i);
         return kortti;
     }
 
-    /*
-    * Ottaa kortin tietyn indeksin kohdalta pinosta
+    /**
+     * Ottaa kortin tietyn indeksin kohdalta pinosta ja poistaa sen.
+     *
+     * @param i kortin indeksi
+     * @return indeksin kortti
      */
     public Kortti otaKorttiPinosta(int i) {
         Kortti kortti = pino.get(i);
@@ -46,8 +59,10 @@ public class Pino {
         return kortti;
     }
 
-    /*
-    * Poistaa tietyn kortin pinosta ja sen alapuolella olevat kortit
+    /**
+     * Poistaa tietyn kortin pinosta ja sen alapuolella olevat kortit.
+     *
+     * @param k Kortti jonka alta poistetaan kortit
      */
     public void poistaKorttiSarja(Kortti k) {
         int indeksi = pino.indexOf(k);
@@ -58,17 +73,29 @@ public class Pino {
         }
     }
 
-    /*
-    * Palauttaa pinon koon
+    /**
+     * Palauttaa pinon koon.
+     *
+     * @return pinon koko inttinä
      */
     public int pinonKoko() {
         return pino.size();
     }
 
+    /**
+     * palauttaa pinon ylimmän kortin indeksin.
+     *
+     * @return ylimmän kortin indeksi inttinä
+     */
     public int pinonYlinIndeksi() {
         return (pino.size() - 1);
     }
 
+    /**
+     * Tulostaa pinon kortit.
+     *
+     * @return tuloste korteista
+     */
     public String toString() {
 
         for (int i = 0; i < pino.size(); i++) {
@@ -78,8 +105,10 @@ public class Pino {
         return "";
     }
 
-    /*
-    * Tarkistaa onko pino tyhjä
+    /**
+     * Tarkistaa onko pino tyhjä.
+     *
+     * @return true jos tyhjä
      */
     public boolean onkoTyhja() {
         return pino.isEmpty();

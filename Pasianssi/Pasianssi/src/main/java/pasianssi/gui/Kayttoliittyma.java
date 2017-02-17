@@ -3,16 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gui;
+package pasianssi.gui;
 
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
-import logiikka.PeliAlusta;
+import pasianssi.logiikka.PeliAlusta;
 
 /**
- * Luokka rakentaa käyttöliittymän josta peliä pelataan
+ * Luokka rakentaa käyttöliittymän josta peliä pelataan.
  *
  * @author Harri
  */
@@ -22,13 +22,20 @@ public class Kayttoliittyma implements Runnable {
     private PeliAlusta peliAlusta;
     private Piirtoalusta palusta;
 
+    /**
+     * Käyttöliittymän konstruktori jossa luodaan PeliAlusta ilmentymä.
+     *
+     * @param peliAlusta annetaan peliAlusta
+     */
     public Kayttoliittyma(PeliAlusta peliAlusta) {
         this.peliAlusta = peliAlusta;
 
     }
 
-    /*
-    * Lisää komponentit säiliöön josta ne piirretään
+    /**
+     * Lisää komponentit säiliöön josta ne piirretään.
+     *
+     * @param container container piirtämisen säilöntään
      */
     public void luoKomponentit(Container container) {
         palusta = new Piirtoalusta(peliAlusta);

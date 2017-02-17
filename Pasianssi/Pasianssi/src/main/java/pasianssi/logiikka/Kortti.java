@@ -1,8 +1,7 @@
 /**
  * Pakkauksessa pasianssi.pasianssi
  */
-
-package logiikka;
+package pasianssi.logiikka;
 
 /**
  * Kortti luokka yksittäiselle kortille.
@@ -38,9 +37,8 @@ public class Kortti {
      * Korttien nimet.
      */
     private final String[] korttienNimet = new String[]{
-        "Ace", "2", "3", "4", "5", "6",
-        "7", "8", "9", "10", "Jack",
-        "Queen", "King"
+        "Ace", "2", "3", "4", "5", "6", "7", "8", "9",
+        "10", "Jack", "Queen", "King"
     };
 
     /**
@@ -52,8 +50,10 @@ public class Kortti {
 
     private boolean kuvaPuoliYlos = false;
 
-    /*
+    /**
      * Käytetty konstruktori.
+     *
+     * @param uudenKortinPakkaArvo uudenKortinPakkaArvo pakkaID kortille
      */
     public Kortti(final int uudenKortinPakkaArvo) {
         if ((uudenKortinPakkaArvo < 1 || uudenKortinPakkaArvo > 52)) {
@@ -88,8 +88,11 @@ public class Kortti {
         return korttienNimet[kortinArvo - 1];
     }
 
-    /*
+    /**
      * PakkaArvon muuntaminen kortin arvoksi.
+     *
+     * @param pakkaArvo kortin id arvo
+     * @return palauttaa kortin arvon 1-13
      */
     public static int pakkaArvoKortinArvoksi(final int pakkaArvo) {
         int k = 13;
@@ -121,36 +124,33 @@ public class Kortti {
 
     }
 
-    /*
+    /**
      * Kortin koko nimen tulostus.
+     *
+     * @return kortinNimi kortinNimi tekstinä
      */
     public final String toStringPitka() {
         String kortinNimi = getKortinMaanNimi() + " " + getKortinArvonNimi();
         return kortinNimi;
     }
 
-    /*
+    /**
      * KortinArvon ja maanArvon muuntaminen pakkaArvoksi.
+     *
+     * @param kortinArvo kortin arvo 1-13
+     * @param maanArvo kortin maaID 1-4
+     * @return pakkaArvo pakkaArvo pakkaID int
      */
     public static int pakkaArvoksi(final int kortinArvo, final int maanArvo) {
-//        if (1 > kortinArvo) {
-//            throw new IllegalArgumentException("Virheellinen kortin arvo");
-//        }
-//        if (kortinArvo > 13) {
-//            throw new IllegalArgumentException("Virheellinen kortin arvo");
-//        }
-//        if (maanArvo < 1) {
-//            throw new IllegalArgumentException("Virheellinen maan arvo");
-//        }
-//        if (maanArvo > 4) {
-//            throw new IllegalArgumentException("Virheellinen maan arvo");
-//        }
         int pakkaArvo = (13 * (maanArvo - 1)) + kortinArvo;
         return pakkaArvo;
     }
 
-    /*
+    /**
      * PakkaArvosta muunto maa arvoksi.
+     *
+     * @param pakkaArvo kortin pakkaID
+     * @return palauttaa kortin maaIDn
      */
     public static int pakkaArvoMaanArvoksi(final int pakkaArvo) {
         int maanArvo = pakkaArvo / 13;
@@ -160,24 +160,32 @@ public class Kortti {
         return maanArvo;
     }
 
-    
-    /*
-    * Tarkistetaan onko kortti musta vai punainen
-    * Jos puneinen niin palautetaan true
-    */
-    
+    /**
+     * Tarkistetaan onko kortti musta vai punainen jos puneinen niin palautetaan
+     * true.
+     *
+     * @return false jos ei ole punainen true jos on
+     */
     public final boolean onkoPunainen() {
         if (maanArvo == 1 || maanArvo == 3) {
             return true;
         }
         return false;
     }
-    
-    public void kaannaKortti(){
+
+    /**
+     * Muuttaa kortin kuvaPuoliYlos arvoksi true.
+     */
+    public void kaannaKortti() {
         this.kuvaPuoliYlos = true;
     }
-    
-    public boolean onkoKuvaYlos(){
+
+    /**
+     * Palauttaa kortin kuvaPuoliYlos arvon.
+     *
+     * @return true jos kuva ylös false jos kuva alas
+     */
+    public boolean onkoKuvaYlos() {
         return this.kuvaPuoliYlos;
     }
 
