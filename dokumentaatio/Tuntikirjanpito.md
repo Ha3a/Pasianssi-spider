@@ -8,3 +8,5 @@ Päivä | Tunnit | Kuvaus
 30.01.2017 | 4h | Koodin kirjoittamista
 03.02.2017 | 5h | Koodia, testejä ja konfiguraatiota
 09.02.2017 | 7h | Käyttöliittymän rakentamisen opettelua ja pientä toteuttamista
+16.02.2017 | 4h | Käyttöliittymän rakentamista
+17.02.2017 | 6h | Koodia ja käyttöliittyymää sekä dokumentaatiota
