@@ -21,75 +21,70 @@ import pasianssi.logiikka.Pino;
 public class Hiirenkuuntelija extends MouseAdapter {
 
     private Kayttoliittyma ka;
-    private int klikkattux;
+    private int klikattux;
     private int klikattuy;
     private PeliAlusta pa;
     private Pino pinot;
     private Pino pinat;
     private Pino[] pinoja;
     private Piirtoalusta pial;
-    
+
     private Pino kohde = null;
-    
+
     private Kortti vkortti;
-    
-    
-    
+
     public Hiirenkuuntelija(Kayttoliittyma ka, Piirtoalusta pa, PeliAlusta pal) {
         this.ka = ka;
         pial = pa;
         this.pa = pal;
 
-
-
-        
-        
-                
-
-        
-        
-        
     }
 
-    
     /**
      * Tarkista onko klikattu pinon päältä, jos on niin mikä kortti pinosta
-     * 
-     * 
-     * @param e 
+     *
+     *
+     * @param e
      */
-    
-    
-    
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println("kek");
-        
-               
-        
-        klikkattux = e.getX();
+
+        pinoja = pa.getAlaPinot();
+
+        klikattux = e.getX();
         klikattuy = e.getY();
-        System.out.println("" + klikkattux + "x " + klikattuy + "y");
-        
-        if(vkortti != null){
-            
+        System.out.println("" + klikattux + "x " + klikattuy + "y");
+
+        mihinPinoonOsutaan();
+
+        if (pinat != null) {
+            System.out.println("" + pinat.pinonKoko());
         }
-        
-        if(410 < klikkattux && klikkattux < 460 && 80 < klikattuy && klikattuy < 130){
+
+        for (int i = 0; i < 7; i++) {
+            for (int a = pinoja[i].pinonYlinIndeksi(); a >= 0; a--) {
+                Kortti k = pinoja[i].getKorttiPinosta(a);
+                if (osuukoKorttiin(k) && k.onkoKuvaYlos()) {
+                    System.out.println("" + k);
+                    break;
+                }
+
+            }
+        }
+
+        if (vkortti != null) {
+
+        }
+
+        if (410 < klikattux && klikattux < 460 && 80 < klikattuy && klikattuy < 130) {
             pa.otaKorttiPakasta();
             pial.repaint();
-        }else if(360 < klikkattux && klikkattux < 410 && 80 < klikattuy && klikattuy < 130){
-            vkortti = pa.valitseKortti();
+        } else if (360 < klikattux && klikattux < 410 && 80 < klikattuy && klikattuy < 130) {
+            vkortti = pa.valitseKaantoPakanPaalimmainenKortti();
+            System.out.println("" + vkortti);
         }
-        
-        
 
-        
-        
-        
-        
-        
-        
 //        source = Pino[x];
 //        
 //        for (Component c : source.getComponents()){
@@ -97,4 +92,31 @@ public class Hiirenkuuntelija extends MouseAdapter {
 //        }
     }
 
+    public boolean osuukoKorttiin(Kortti k) {
+
+        if ((k.getKortinX() + 9) < klikattux && klikattux <= (k.getKortinX() + 55)
+                && (k.getKortinY() + 25) < klikattuy && klikattuy <= (k.getKortinY() + 80)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public void mihinPinoonOsutaan() {
+        for (int i = 0; i < 7; i++) {
+            if ((pinoja[i].getPinonX()) < klikattux && klikattux <= (pinoja[i].getPinonX() + 55)
+                    && (pinoja[i].getPinonY()) < klikattuy) {
+                pinat = pinoja[i];
+            } else {
+                pinat = null;
+            }
+
+        }
+    }
+
+
+
 }
+
+//return (k.getKortinX()) < klikattux && klikattux > k.getKortinX()
+//                && (k.getKortinY()) < klikattuy && klikattuy > k.getKortinY();

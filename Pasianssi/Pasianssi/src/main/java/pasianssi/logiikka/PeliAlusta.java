@@ -1,5 +1,7 @@
 package pasianssi.logiikka;
 
+import java.io.IOException;
+
 /**
  * Luokka sisältää Pelialustan jonne kortit jaetaan Luokassa on myös pinot
  * joihin kortit jaetaan ja jonne ne tulisi siirtää.
@@ -18,17 +20,27 @@ public class PeliAlusta {
      * Alustaa pelialustan ja luo pinot, kaantopakat, sekä pakan josta kortit
      * jaetaan.
      */
-    public PeliAlusta() {
+    public PeliAlusta() throws IOException {
         alaPinot = new Pino[7];
+
+        int x = 20;
+        int y = 150;
+
         for (int i = 0; i < alaPinot.length; i++) {
-            alaPinot[i] = new Pino();
+            alaPinot[i] = new Pino(x, y);
+            x += 65;
         }
         ylaPinot = new Pino[4];
+
+        x = 20;
+        y = 50;
+
         for (int i = 0; i < ylaPinot.length; i++) {
-            ylaPinot[i] = new Pino();
+            ylaPinot[i] = new Pino(x, y);
+            x += 65;
         }
-        kaantoPakka = new Pino();
-        kaannettavaPakka = new Pino();
+        kaantoPakka = new Pino(345, 50);
+        kaannettavaPakka = new Pino(410, 50);
         pakka = new Pakka();
         pakka.luoPakka();
 
@@ -40,9 +52,15 @@ public class PeliAlusta {
     public void jaaKortit() {
         int a = 7;
         int b = 0;
+
         for (int i = 0; i < 7; i++) {
+            int y = alaPinot[0].getPinonY();
             while (b < a) {
                 alaPinot[i].lisaaPinoon(pakka.otaKortti(b));
+                alaPinot[i].getKorttiPinosta(b).setKortinX(alaPinot[i].getPinonX());
+                alaPinot[i].getKorttiPinosta(b).setKortinY(y);
+
+                y += 35;
                 b++;
             }
             a--;
@@ -51,6 +69,7 @@ public class PeliAlusta {
 
         while (!pakka.onkoTyhja()) {
             kaannettavaPakka.lisaaPinoon(pakka.otaKortti(pakka.pakanKoko() - 1));
+            annaPaalimmaiselleKortillePinonXY(kaannettavaPakka);
         }
 
         for (int i = 0; i < 7; i++) {
@@ -64,7 +83,7 @@ public class PeliAlusta {
      */
     /**
      * Gettereitä.
-     * 
+     *
      * @return alaPinot palauttaa alaPinot pinot
      */
     public Pino[] getAlaPinot() {
@@ -87,6 +106,12 @@ public class PeliAlusta {
         return kaannettavaPakka;
     }
 
+    public void annaPaalimmaiselleKortillePinonXY(Pino pino) {
+        pino.getKorttiPinosta(pino.pinonYlinIndeksi()).setKortinX(pino.getPinonX());
+        pino.getKorttiPinosta(pino.pinonYlinIndeksi()).setKortinY(pino.getPinonY());
+
+    }
+
     /**
      * Ottaa kortin kääntöpakasta ja siirtää sen käännettyyn pakkaan Mikäli
      * kortit loppuu kääntöpakasta niin kortit siirretään takaisin sinne.
@@ -96,9 +121,11 @@ public class PeliAlusta {
             int i = kaannettavaPakka.pinonKoko() - 1;
             kaantoPakka.lisaaPinoon(kaannettavaPakka.otaKorttiPinosta(i));
             kaantoPakka.getKorttiPinosta(kaantoPakka.pinonYlinIndeksi()).kaannaKortti();
+            annaPaalimmaiselleKortillePinonXY(kaantoPakka);
         } else {
             while (!kaantoPakka.onkoTyhja()) {
                 kaannettavaPakka.lisaaPinoon(kaantoPakka.otaKorttiPinosta(kaantoPakka.pinonKoko() - 1));
+                annaPaalimmaiselleKortillePinonXY(kaannettavaPakka);
             }
         }
 
@@ -107,19 +134,21 @@ public class PeliAlusta {
     /**
      * Siirtää kortin pinosta toiseen.
      *
-     * @param valittu mistä kortti otetaan
-     * @param mista minne kortti laitetaan
+     * @param mista mistä kortti otetaan
+     * @param minne minne kortti laitetaan
      */
-    public void siirraKorttiYlaPinoon(Pino valittu, Pino mista) {
+    public void siirraKorttiYlaPinoon(Pino mista, Pino minne) {
 
-        Kortti valittuKortti = valittu.getKorttiPinosta(valittu.pinonYlinIndeksi());
-        if (mista.pinonKoko() == 0 && valittuKortti.getKortinArvo() == 1) {
-            valittu.poistaTiettyKortti(valittuKortti);
-            mista.lisaaPinoon(valittuKortti);
-        } else if (!mista.onkoTyhja() && mista.getKorttiPinosta(mista.pinonYlinIndeksi()).getKortinArvo() == valittuKortti.getKortinArvo() - 1
-                && mista.getKorttiPinosta(mista.pinonYlinIndeksi()).getMaanArvo() == valittuKortti.getMaanArvo()) {
-            valittu.poistaTiettyKortti(valittuKortti);
-            mista.lisaaPinoon(valittuKortti);
+        Kortti valittuKortti = mista.getKorttiPinosta(mista.pinonYlinIndeksi());
+        if (minne.pinonKoko() == 0 && valittuKortti.getKortinArvo() == 1) {
+            mista.poistaTiettyKortti(valittuKortti);
+            minne.lisaaPinoon(valittuKortti);
+            annaPaalimmaiselleKortillePinonXY(minne);
+        } else if (!minne.onkoTyhja() && minne.getKorttiPinosta(minne.pinonYlinIndeksi()).getKortinArvo() == valittuKortti.getKortinArvo() - 1
+                && minne.getKorttiPinosta(minne.pinonYlinIndeksi()).getMaanArvo() == valittuKortti.getMaanArvo()) {
+            mista.poistaTiettyKortti(valittuKortti);
+            minne.lisaaPinoon(valittuKortti);
+            annaPaalimmaiselleKortillePinonXY(minne);
         }
     }
 
@@ -136,6 +165,8 @@ public class PeliAlusta {
         if (minne.onkoTyhja() && valittuKortti.getKortinArvo() == 13) {
             for (int i = valittu.pinonKoko() - montako; i < valittu.pinonKoko(); i++) {
                 Kortti siirrettava = valittu.getKorttiPinosta(i);
+                siirrettava.setKortinX(minne.getPinonX());
+                siirrettava.setKortinY(minne.getKorttiPinosta(minne.pinonYlinIndeksi()).getKortinY() + 35);
                 minne.lisaaPinoon(siirrettava);
             }
             valittu.poistaKorttiSarja(valittuKortti);
@@ -143,6 +174,8 @@ public class PeliAlusta {
                 && minne.getKorttiPinosta(minne.pinonYlinIndeksi()).onkoPunainen() != valittuKortti.onkoPunainen()) {
             for (int i = valittu.pinonKoko() - montako; i < valittu.pinonKoko(); i++) {
                 Kortti siirrettava = valittu.getKorttiPinosta(i);
+                siirrettava.setKortinX(minne.getPinonX());
+                siirrettava.setKortinY(minne.getKorttiPinosta(minne.pinonYlinIndeksi()).getKortinY() + 35);
                 minne.lisaaPinoon(siirrettava);
             }
             valittu.poistaKorttiSarja(valittuKortti);
@@ -161,8 +194,8 @@ public class PeliAlusta {
         }
     }
 
-    public Kortti valitseKortti(){
+    public Kortti valitseKaantoPakanPaalimmainenKortti() {
         return kaantoPakka.getKorttiPinosta(kaantoPakka.pinonYlinIndeksi());
     }
-    
+
 }

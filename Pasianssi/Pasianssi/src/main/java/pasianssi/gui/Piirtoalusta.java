@@ -9,6 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
+import pasianssi.logiikka.Kortti;
 import pasianssi.logiikka.PeliAlusta;
 import pasianssi.logiikka.Pino;
 
@@ -21,7 +22,6 @@ import pasianssi.logiikka.Pino;
 public class Piirtoalusta extends JPanel {
 
     private PeliAlusta ohjain;
-   
 
     /**
      * Konstruktorille annetaan paremetriksi PeliAlusta luokan ilmentymä.
@@ -30,7 +30,7 @@ public class Piirtoalusta extends JPanel {
      */
     public Piirtoalusta(PeliAlusta peli) {
         this.ohjain = peli;
-       
+
     }
 
     @Override
@@ -140,9 +140,11 @@ public class Piirtoalusta extends JPanel {
     public void piirraPino(Graphics g, Pino a, int x, int y) throws IOException {
         for (int i = 0; i < a.pinonKoko(); i++) {
             if (a.getKorttiPinosta(i).onkoKuvaYlos()) {
-                InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + a.getKorttiPinosta(i).getPakkaArvo() + ".png");
-                BufferedImage bf = ImageIO.read(is);
-                g.drawImage(bf, x, y, 50, 50, this);
+                Kortti k = a.getKorttiPinosta(i);
+                BufferedImage bf = k.getKuva();
+//                InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + a.getKorttiPinosta(i).getPakkaArvo() + ".png");
+//                BufferedImage bf = ImageIO.read(is);
+                g.drawImage(bf, k.getKortinX(), k.getKortinY(), 50, 50, this);
             } else {
                 InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/korttitausta.png");
                 BufferedImage bf = ImageIO.read(is);
@@ -183,8 +185,11 @@ public class Piirtoalusta extends JPanel {
      */
     public void piirraPaalimmainenKortti(Graphics g, Pino a, int x, int y) throws IOException {
         if (!a.onkoTyhja() && a.getKorttiPinosta(a.pinonYlinIndeksi()).onkoKuvaYlos()) {
-            InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + a.getKorttiPinosta(a.pinonYlinIndeksi()).getPakkaArvo() + ".png");
-            BufferedImage bf = ImageIO.read(is);
+
+            BufferedImage bf = a.getKorttiPinosta(a.pinonYlinIndeksi()).getKuva();
+
+//            InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + a.getKorttiPinosta(a.pinonYlinIndeksi()).getPakkaArvo() + ".png");
+//            BufferedImage bf = ImageIO.read(is);
             g.drawImage(bf, x, y, 50, 50, this);
         }
 

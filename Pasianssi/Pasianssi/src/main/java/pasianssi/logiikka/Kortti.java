@@ -3,12 +3,22 @@
  */
 package pasianssi.logiikka;
 
+import java.awt.image.BufferedImage;
+import java.io.IOException;
+import java.io.InputStream;
+import javax.imageio.ImageIO;
+
 /**
  * Kortti luokka yksittäiselle kortille.
  *
  * @author Harri
  */
 public class Kortti {
+
+    private int kortinX;
+    private int kortinY;
+
+    private BufferedImage kortinKuva;
 
     /**
      * Maa idt. HERTTA on 1, PATA 2, RUUTU 3, RISTI 4.
@@ -55,13 +65,16 @@ public class Kortti {
      *
      * @param uudenKortinPakkaArvo uudenKortinPakkaArvo pakkaID kortille
      */
-    public Kortti(final int uudenKortinPakkaArvo) {
+    public Kortti(final int uudenKortinPakkaArvo) throws IOException {
         if ((uudenKortinPakkaArvo < 1 || uudenKortinPakkaArvo > 52)) {
             throw new IllegalArgumentException("Virheellinen arvo");
         }
         this.pakkaArvo = uudenKortinPakkaArvo;
         this.maanArvo = pakkaArvoMaanArvoksi(uudenKortinPakkaArvo);
         this.kortinArvo = pakkaArvoKortinArvoksi(uudenKortinPakkaArvo);
+
+        InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + pakkaArvo + ".png");
+        kortinKuva = ImageIO.read(is);
 
     }
 
@@ -86,6 +99,26 @@ public class Kortti {
 
     public final String getKortinArvonNimi() {
         return korttienNimet[kortinArvo - 1];
+    }
+
+    public int getKortinX() {
+        return kortinX;
+    }
+
+    public int getKortinY() {
+        return kortinY;
+    }
+
+    public void setKortinX(int x) {
+        kortinX = x;
+    }
+
+    public void setKortinY(int y) {
+        kortinY = y;
+    }
+    
+    public BufferedImage getKuva(){
+        return kortinKuva;
     }
 
     /**

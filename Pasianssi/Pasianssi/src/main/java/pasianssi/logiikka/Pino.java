@@ -10,14 +10,30 @@ import java.util.ArrayList;
 public class Pino {
 
     private ArrayList<Kortti> pino;
-
+    private int pinonX;
+    private int pinonY;
+    
+    
     /**
      * Luodaan ArrayList.
      */
-    public Pino() {
+    public Pino(int x, int y) {
         this.pino = new ArrayList<>();
+        pinonX = x;
+        pinonY = y;
     }
 
+    
+    
+    public int getPinonX(){
+        return pinonX;
+    }
+    
+    public int getPinonY(){
+        return pinonY;
+    }
+    
+    
     /**
      * lisätään kortti pinoon.
      *
@@ -25,6 +41,7 @@ public class Pino {
      */
     public void lisaaPinoon(Kortti k) {
         pino.add(k);
+        
     }
 
     /**

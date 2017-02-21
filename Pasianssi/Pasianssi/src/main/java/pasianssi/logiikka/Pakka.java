@@ -1,5 +1,6 @@
 package pasianssi.logiikka;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -22,7 +23,7 @@ public class Pakka {
     /**
      * Metodi luo 52 korttisen pakan jossa on jokaista korttia yksi.
      */
-    public final void luoPakka() {
+    public final void luoPakka() throws IOException {
         if (onkoTyhja()) {
             for (int i = 1; i <= 52;) {
                 pakka.add(new Kortti(i));
