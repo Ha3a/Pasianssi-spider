@@ -21,7 +21,9 @@ public class Kayttoliittyma implements Runnable {
     private JFrame frame;
     private PeliAlusta peliAlusta;
     private Piirtoalusta palusta;
-
+    private Hiirenkuuntelija hiku;
+    
+    
     /**
      * Käyttöliittymän konstruktori jossa luodaan PeliAlusta ilmentymä.
      *
@@ -38,12 +40,16 @@ public class Kayttoliittyma implements Runnable {
      * @param container container piirtämisen säilöntään
      */
     public void luoKomponentit(Container container) {
+        
         palusta = new Piirtoalusta(peliAlusta);
+        hiku = new Hiirenkuuntelija(this, palusta, peliAlusta);
 
         container.add(palusta);
 
     }
 
+    
+    
     /*
     * Piirtää peli näytölle
      */
@@ -55,6 +61,7 @@ public class Kayttoliittyma implements Runnable {
         luoKomponentit(frame.getContentPane());
         frame.pack();
         frame.setVisible(true);
+        frame.addMouseListener(hiku);
 
     }
 

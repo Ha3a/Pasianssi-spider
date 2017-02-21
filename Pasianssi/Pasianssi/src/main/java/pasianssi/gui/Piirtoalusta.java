@@ -21,6 +21,7 @@ import pasianssi.logiikka.Pino;
 public class Piirtoalusta extends JPanel {
 
     private PeliAlusta ohjain;
+   
 
     /**
      * Konstruktorille annetaan paremetriksi PeliAlusta luokan ilmentymä.
@@ -29,6 +30,7 @@ public class Piirtoalusta extends JPanel {
      */
     public Piirtoalusta(PeliAlusta peli) {
         this.ohjain = peli;
+       
     }
 
     @Override

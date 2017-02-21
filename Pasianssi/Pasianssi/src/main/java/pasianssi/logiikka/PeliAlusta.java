@@ -161,4 +161,8 @@ public class PeliAlusta {
         }
     }
 
+    public Kortti valitseKortti(){
+        return kaantoPakka.getKorttiPinosta(kaantoPakka.pinonYlinIndeksi());
+    }
+    
 }
