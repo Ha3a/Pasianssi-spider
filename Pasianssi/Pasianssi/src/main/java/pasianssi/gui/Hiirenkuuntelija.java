@@ -107,6 +107,7 @@ public class Hiirenkuuntelija extends MouseAdapter {
             if ((pinoja[i].getPinonX()) < klikattux && klikattux <= (pinoja[i].getPinonX() + 55)
                     && (pinoja[i].getPinonY()) < klikattuy) {
                 pinat = pinoja[i];
+                break;
             } else {
                 pinat = null;
             }
