@@ -4,6 +4,8 @@ Pasianssi
 Peliss‰ j‰rjestell‰‰n kortteja pinoihin ja avattua piilotetut kortit
 Pelin voittaa kun on saannut kortit siirretty‰ pois pelist‰
 
+##PIT ei suostunut menem‰‰n l‰pi
+
 
 ###Dokumentaatio
 
