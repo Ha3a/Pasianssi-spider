@@ -10,3 +10,5 @@ Päivä | Tunnit | Kuvaus
 09.02.2017 | 7h | Käyttöliittymän rakentamisen opettelua ja pientä toteuttamista
 16.02.2017 | 4h | Käyttöliittymän rakentamista
 17.02.2017 | 6h | Koodia ja käyttöliittyymää sekä dokumentaatiota
+21.02.2017 | 6h | Hiiren toteuttamista
+24.02.2017 | 5h | Hiiren korjailua ja dokumentointia
