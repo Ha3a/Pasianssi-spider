@@ -103,14 +103,16 @@ public class Main {
         PeliAlusta peli = new PeliAlusta();
         Pino apinot[] = peli.getAlaPinot();
         Pino ypinot[] = peli.getYlaPinot();
+        peli.sekoitaPakka();
         peli.jaaKortit();
-        peli.otaKorttiPakasta();
-        peli.siirraKorttiYlaPinoon(apinot[4], ypinot[1]);
-        peli.siirraKorttiYlaPinoon(apinot[5], ypinot[1]);
-        peli.siirraKortteja(apinot[3], apinot[0], 1);
-        peli.kannaKorttiOikeinPain(apinot[3]);
-        peli.kannaKorttiOikeinPain(apinot[4]);
-        peli.kannaKorttiOikeinPain(apinot[5]);
+        
+//        peli.otaKorttiPakasta();
+//        peli.siirraKorttiYlaPinoon(apinot[4], ypinot[1]);
+//        peli.siirraKorttiYlaPinoon(apinot[5], ypinot[1]);
+////        peli.siirraKortteja(apinot[3], apinot[0], 1);
+////        peli.kannaKorttiOikeinPain(apinot[3]);
+//        peli.kannaKorttiOikeinPain(apinot[4]);
+//        peli.kannaKorttiOikeinPain(apinot[5]);
         
         Kayttoliittyma pa = new Kayttoliittyma(peli);
         

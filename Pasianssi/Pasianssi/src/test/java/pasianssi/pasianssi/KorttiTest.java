@@ -5,6 +5,7 @@
  */
 package pasianssi.pasianssi;
 
+import java.io.IOException;
 import pasianssi.logiikka.Kortti;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -42,7 +43,7 @@ public class KorttiTest {
     }
 
     @Test
-    public void testLuoKortit() {
+    public void testLuoKortit() throws IOException {
         for (int i = 1; i <= 52; i++) {
             Kortti kortti = new Kortti(i);
         }
@@ -52,7 +53,7 @@ public class KorttiTest {
 
     //Antaako getPakkaArvo oikean arvon
     @Test
-    public void testGetPakkaArvo() {
+    public void testGetPakkaArvo() throws IOException {
         Kortti kortti = new Kortti(1);
         int i = kortti.getPakkaArvo();
         assertEquals(1, i);
@@ -60,7 +61,7 @@ public class KorttiTest {
 
     //Sama max valuella
     @Test
-    public void testGetPakkaArvoMax() {
+    public void testGetPakkaArvoMax() throws IOException {
         Kortti kortti = new Kortti(52);
         int i = kortti.getPakkaArvo();
         assertEquals(52, i);
@@ -68,7 +69,7 @@ public class KorttiTest {
 
     //Antaako getMaanArvo oikean arvon
     @Test
-    public void testGetMaanArvo() {
+    public void testGetMaanArvo() throws IOException {
         Kortti kortti = new Kortti(1);
         int i = kortti.getMaanArvo();
         assertEquals(1, i);
@@ -76,7 +77,7 @@ public class KorttiTest {
 
     //Sama max valuella
     @Test
-    public void testGetMaanArvoMax() {
+    public void testGetMaanArvoMax() throws IOException {
         Kortti kortti = new Kortti(52);
         int i = kortti.getMaanArvo();
         assertEquals(4, i);
@@ -84,7 +85,7 @@ public class KorttiTest {
 
     //Antaako getKortinMaanNimi oikean nimen
     @Test
-    public void testGetKortinMaanNimi() {
+    public void testGetKortinMaanNimi() throws IOException {
         Kortti kortti = new Kortti(1);
         String nimi = kortti.getKortinMaanNimi();
         assertEquals("Hearts", nimi);
@@ -92,7 +93,7 @@ public class KorttiTest {
 
     //Sama max valuella
     @Test
-    public void testGetKortinMaanNimiMax() {
+    public void testGetKortinMaanNimiMax() throws IOException {
         Kortti kortti = new Kortti(52);
         String nimi = kortti.getKortinMaanNimi();
         assertEquals("Clubs", nimi);
@@ -100,7 +101,7 @@ public class KorttiTest {
 
     // Antaako getKortinArvo oikean arvon
     @Test
-    public void testGetKortinArvo() {
+    public void testGetKortinArvo() throws IOException {
         Kortti kortti = new Kortti(1);
         int i = kortti.getKortinArvo();
         assertEquals(1, i);
@@ -108,15 +109,19 @@ public class KorttiTest {
 
     //Sama max valuella
     @Test
-    public void testGetKortinArvoMax() {
+    public void testGetKortinArvoMax() throws IOException {
         Kortti kortti = new Kortti(52);
         int i = kortti.getKortinArvo();
         assertEquals(13, i);
     }
 
     //Antaako getKortinArvonNimi oikean nimen
+
+    /**
+     *
+     */
     @Test
-    public void testGetKortinArvonNimi() {
+    public void testGetKortinArvonNimi() throws IOException {
         Kortti kortti = new Kortti(1);
         String nimi = kortti.getKortinArvonNimi();
         assertEquals("Ace", nimi);
@@ -124,7 +129,7 @@ public class KorttiTest {
 
     //Tulostaako kortti oikean nimen
     @Test
-    public void testGetKortinArvonNimiMax() {
+    public void testGetKortinArvonNimiMax() throws IOException {
         Kortti kortti = new Kortti(52);
         String nimi = kortti.getKortinArvonNimi();
         assertEquals("King", nimi);
@@ -132,7 +137,7 @@ public class KorttiTest {
 
     //Muuntuuko pakkaArvo kortinArvoksi oikein
     @Test
-    public void testpakkaArvoKortinArvoksi() {
+    public void testpakkaArvoKortinArvoksi() throws IOException {
         Kortti kortti = new Kortti(52);
         int i = Kortti.pakkaArvoKortinArvoksi(kortti.getPakkaArvo());
         assertEquals(13, i);
@@ -140,21 +145,21 @@ public class KorttiTest {
 
     //Toimiiko lyhyt tulostus oikein
     @Test
-    public void testToString() {
+    public void testToString() throws IOException {
         Kortti kortti = new Kortti(1);
         String nimi = kortti.toString();
         assertEquals("AH", nimi);
     }
 
     @Test
-    public void testToStringNumeroKorti() {
+    public void testToStringNumeroKorti() throws IOException {
         Kortti kortti = new Kortti(10);
         String nimi = kortti.toString();
         assertEquals("10H", nimi);
     }
 
     @Test
-    public void testToStringAatelinen() {
+    public void testToStringAatelinen() throws IOException {
         Kortti kortti = new Kortti(13);
         String nimi = kortti.toString();
         assertEquals("KH", nimi);
@@ -162,7 +167,7 @@ public class KorttiTest {
 
     //Toimiiko pitkä tulostus oikein
     @Test
-    public void testToStringPitka() {
+    public void testToStringPitka() throws IOException {
         Kortti kortti = new Kortti(1);
         String nimi = kortti.toStringPitka();
         assertEquals("Hearts Ace", nimi);
@@ -170,7 +175,7 @@ public class KorttiTest {
 
     //Muuntuuko kortinArvo ja maanArvo pakkaArvoksi oikein
     @Test
-    public void testPakkaArvoksi() {
+    public void testPakkaArvoksi() throws IOException {
         Kortti kortti = new Kortti(52);
         int i = Kortti.pakkaArvoksi(kortti.getKortinArvo(), kortti.getMaanArvo());
         assertEquals(52, i);
@@ -178,7 +183,7 @@ public class KorttiTest {
 
     //Muuntuuko pakkaArvo maanArvoksi oikein
     @Test
-    public void testPakkaArvoMaanArvoksi() {
+    public void testPakkaArvoMaanArvoksi() throws IOException {
         Kortti kortti = new Kortti(52);
         int i = Kortti.pakkaArvoMaanArvoksi(kortti.getPakkaArvo());
         assertEquals(4, i);

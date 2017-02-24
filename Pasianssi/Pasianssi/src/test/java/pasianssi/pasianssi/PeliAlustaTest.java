@@ -5,6 +5,7 @@
  */
 package pasianssi.pasianssi;
 
+import java.io.IOException;
 import pasianssi.logiikka.Pino;
 import pasianssi.logiikka.Pakka;
 import pasianssi.logiikka.PeliAlusta;
@@ -41,7 +42,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void jaetaankoKortitPakasta() {
+    public void jaetaankoKortitPakasta() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pakka pakka;
@@ -51,7 +52,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void jaetaankoKortitKaannettavaPakkaan() {
+    public void jaetaankoKortitKaannettavaPakkaan() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino kp;
@@ -60,7 +61,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void onkoKaantoPakkaTyhjaAlussa() {
+    public void onkoKaantoPakkaTyhjaAlussa() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino kp;
@@ -69,7 +70,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void otetaankoKorttiKaannettavastaPakasta() {
+    public void otetaankoKorttiKaannettavastaPakasta() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino kp;
@@ -79,7 +80,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void lisaantyykoKorttiKaantoPakkaan() {
+    public void lisaantyykoKorttiKaantoPakkaan() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino kp;
@@ -89,7 +90,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void siirraAssaYlaPinoon() {
+    public void siirraAssaYlaPinoon() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino apinot[] = pa.getAlaPinot();
@@ -101,7 +102,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void siirraKaksiYlaPinoon() {
+    public void siirraKaksiYlaPinoon() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino apinot[] = pa.getAlaPinot();
@@ -116,7 +117,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void PoistuukoKorttiKunsiirraKaksiYlaPinoon() {
+    public void PoistuukoKorttiKunsiirraKaksiYlaPinoon() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino apinot[] = pa.getAlaPinot();
@@ -129,7 +130,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void PoistuukoKorttiKunsiirraAssaYlaPinoon() {
+    public void PoistuukoKorttiKunsiirraAssaYlaPinoon() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino apinot[] = pa.getAlaPinot();
@@ -141,7 +142,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void SiirtyykoKorttiPinostaToiseenPinoon() {
+    public void SiirtyykoKorttiPinostaToiseenPinoon() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino apinot[] = pa.getAlaPinot();
@@ -152,7 +153,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void SiirtyykoKorttiPinoonToisestaPinosta() {
+    public void SiirtyykoKorttiPinoonToisestaPinosta() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino apinot[] = pa.getAlaPinot();
@@ -163,7 +164,7 @@ public class PeliAlustaTest {
     }
 
     @Test
-    public void SiirtyykoKorttiTyhjaanPinoon() {
+    public void SiirtyykoKorttiTyhjaanPinoon() throws IOException {
         PeliAlusta pa = new PeliAlusta();
         pa.jaaKortit();
         Pino apinot[] = pa.getAlaPinot();

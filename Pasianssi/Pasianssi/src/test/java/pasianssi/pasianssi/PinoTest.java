@@ -5,6 +5,7 @@
  */
 package pasianssi.pasianssi;
 
+import java.io.IOException;
 import pasianssi.logiikka.Pino;
 import pasianssi.logiikka.Kortti;
 import org.junit.After;
@@ -40,7 +41,7 @@ public class PinoTest {
     }
 
     @Test
-    public void lisaytyykoKorttiPinoon() {
+    public void lisaytyykoKorttiPinoon() throws IOException {
         Kortti k = new Kortti(1);
         Pino p = new Pino();
         p.lisaaPinoon(k);
@@ -48,7 +49,7 @@ public class PinoTest {
     }
 
     @Test
-    public void poistuukoTiettyKorttiPinosta() {
+    public void poistuukoTiettyKorttiPinosta() throws IOException {
         Kortti k = new Kortti(1);
         Pino p = new Pino();
         p.lisaaPinoon(k);
@@ -57,7 +58,7 @@ public class PinoTest {
     }
 
     @Test
-    public void poistuukoKorttiSarjaPinosta() {
+    public void poistuukoKorttiSarjaPinosta() throws IOException {
         Pino p = new Pino();
         Kortti k = new Kortti(1);
         p.lisaaPinoon(k);

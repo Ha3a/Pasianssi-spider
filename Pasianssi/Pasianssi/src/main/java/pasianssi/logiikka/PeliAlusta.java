@@ -43,7 +43,12 @@ public class PeliAlusta {
         kaannettavaPakka = new Pino(410, 50);
         pakka = new Pakka();
         pakka.luoPakka();
+        
 
+    }
+    
+    public void sekoitaPakka(){
+        pakka.sekoitaPakka();
     }
 
     /**
@@ -118,7 +123,7 @@ public class PeliAlusta {
      */
     public void otaKorttiPakasta() {
         if (!kaannettavaPakka.onkoTyhja()) {
-            int i = kaannettavaPakka.pinonKoko() - 1;
+            int i = kaannettavaPakka.pinonYlinIndeksi();
             kaantoPakka.lisaaPinoon(kaannettavaPakka.otaKorttiPinosta(i));
             kaantoPakka.getKorttiPinosta(kaantoPakka.pinonYlinIndeksi()).kaannaKortti();
             annaPaalimmaiselleKortillePinonXY(kaantoPakka);
@@ -166,7 +171,7 @@ public class PeliAlusta {
             for (int i = valittu.pinonKoko() - montako; i < valittu.pinonKoko(); i++) {
                 Kortti siirrettava = valittu.getKorttiPinosta(i);
                 siirrettava.setKortinX(minne.getPinonX());
-                siirrettava.setKortinY(minne.getKorttiPinosta(minne.pinonYlinIndeksi()).getKortinY() + 35);
+                siirrettava.setKortinY(minne.getPinonY());
                 minne.lisaaPinoon(siirrettava);
             }
             valittu.poistaKorttiSarja(valittuKortti);

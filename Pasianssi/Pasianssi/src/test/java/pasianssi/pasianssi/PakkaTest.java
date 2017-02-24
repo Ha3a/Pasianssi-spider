@@ -5,6 +5,7 @@
  */
 package pasianssi.pasianssi;
 
+import java.io.IOException;
 import pasianssi.logiikka.Pakka;
 import pasianssi.logiikka.Kortti;
 import org.junit.After;
@@ -40,7 +41,7 @@ public class PakkaTest {
     }
 
     @Test
-    public void luodaankoPakka() {
+    public void luodaankoPakka() throws IOException {
         Pakka pakka = new Pakka();
         pakka.luoPakka();
         int i = pakka.pakanKoko();
@@ -48,7 +49,7 @@ public class PakkaTest {
     }
 
     @Test
-    public void eiLuodaUuuttaPakkaa() {
+    public void eiLuodaUuuttaPakkaa() throws IOException {
         Pakka pakka = new Pakka();
         pakka.luoPakka();
         pakka.luoPakka();
@@ -63,14 +64,14 @@ public class PakkaTest {
     }
 
     @Test
-    public void onkoPakkaEiOleTyhja() {
+    public void onkoPakkaEiOleTyhja() throws IOException {
         Pakka pakka = new Pakka();
         pakka.luoPakka();
         assertFalse(pakka.onkoTyhja());
     }
 
     @Test
-    public void kunOttaaKortinPieneneekoPakka() {
+    public void kunOttaaKortinPieneneekoPakka() throws IOException {
         Pakka pakka = new Pakka();
         pakka.luoPakka();
         pakka.otaKortti(5);
@@ -78,7 +79,7 @@ public class PakkaTest {
     }
 
     @Test
-    public void otetaankoOikeaKortti() {
+    public void otetaankoOikeaKortti() throws IOException {
         Kortti k = new Kortti(1);
         Pakka pakka = new Pakka();
         pakka.luoPakka();
@@ -89,7 +90,7 @@ public class PakkaTest {
     }
 
     @Test
-    public void tulostuukoPakkaOikein() {
+    public void tulostuukoPakkaOikein() throws IOException {
         Pakka pakka = new Pakka();
         pakka.luoPakka();
         String tulostetaan = pakka.tulostaPakka();

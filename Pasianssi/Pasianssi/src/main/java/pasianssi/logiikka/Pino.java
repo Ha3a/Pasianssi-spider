@@ -12,8 +12,7 @@ public class Pino {
     private ArrayList<Kortti> pino;
     private int pinonX;
     private int pinonY;
-    
-    
+
     /**
      * Luodaan ArrayList.
      */
@@ -23,17 +22,18 @@ public class Pino {
         pinonY = y;
     }
 
-    
-    
-    public int getPinonX(){
+    public Pino() {
+        this.pino = new ArrayList<>();
+    }
+
+    public int getPinonX() {
         return pinonX;
     }
-    
-    public int getPinonY(){
+
+    public int getPinonY() {
         return pinonY;
     }
-    
-    
+
     /**
      * lisätään kortti pinoon.
      *
@@ -41,7 +41,7 @@ public class Pino {
      */
     public void lisaaPinoon(Kortti k) {
         pino.add(k);
-        
+
     }
 
     /**
@@ -130,4 +130,9 @@ public class Pino {
     public boolean onkoTyhja() {
         return pino.isEmpty();
     }
+
+    public int getKortinIndeks(Kortti k) {
+        return pino.indexOf(k);
+    }
+
 }

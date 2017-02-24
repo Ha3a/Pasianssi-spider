@@ -26,8 +26,11 @@ public class Hiirenkuuntelija extends MouseAdapter {
     private PeliAlusta pa;
     private Pino pinot;
     private Pino pinat;
+    private Pino kpakka;
+    private Pino[] ypinot;
     private Pino[] pinoja;
     private Piirtoalusta pial;
+    int moneskoKortti;
 
     private Pino kohde = null;
 
@@ -51,39 +54,79 @@ public class Hiirenkuuntelija extends MouseAdapter {
         System.out.println("kek");
 
         pinoja = pa.getAlaPinot();
+        kpakka = pa.getKaantoPakka();
+        ypinot = pa.getYlaPinot();
 
+//        int apuri = 7;
+//        for(int i = 0; i < 4; i++){
+//            pinoja[apuri] = ypinot[i];
+//            apuri += +1;
+//        }
         klikattux = e.getX();
         klikattuy = e.getY();
         System.out.println("" + klikattux + "x " + klikattuy + "y");
 
+        if (pinat != null) {
+            mihinPinoonOsutaanNyt();
+            if (pinot != null) {
+                if (149 < pinot.getPinonY()) {
+                    pa.siirraKortteja(pinat, pinot, moneskoKortti);
+                    pial.repaint();
+                    pinat = null;
+                    pinot = null;
+                } else if (pinot.getPinonY() < 149) {
+                    pa.siirraKorttiYlaPinoon(pinat, pinot);
+                    pial.repaint();
+                    pinat = null;
+                    pinot = null;
+                }
+            }
+        }
+
         mihinPinoonOsutaan();
+
+        if (pinat != null && !pinat.getKorttiPinosta(pinat.pinonYlinIndeksi()).onkoKuvaYlos()) {
+            pinat.getKorttiPinosta(pinat.pinonYlinIndeksi()).kaannaKortti();
+            pial.repaint();
+        }
 
         if (pinat != null) {
             System.out.println("" + pinat.pinonKoko());
         }
 
-        for (int i = 0; i < 7; i++) {
-            for (int a = pinoja[i].pinonYlinIndeksi(); a >= 0; a--) {
-                Kortti k = pinoja[i].getKorttiPinosta(a);
-                if (osuukoKorttiin(k) && k.onkoKuvaYlos()) {
-                    System.out.println("" + k);
-                    break;
-                }
-
-            }
-        }
-
-        if (vkortti != null) {
-
-        }
+//        for (int i = 0; i < 7; i++) {
+//            for (int a = pinoja[i].pinonYlinIndeksi(); a >= 0; a--) {
+//                Kortti k = pinoja[i].getKorttiPinosta(a);
+//                if (osuukoKorttiin(k) && k.onkoKuvaYlos()) {
+//                    System.out.println("" + k);
+//                    System.out.println("" + pinat.getKortinIndeks(k));
+//                    moneskoKortti = (pinat.pinonKoko() - pinat.getKortinIndeks(k));
+//                    System.out.println("" + moneskoKortti);
+//                    break;
+//                }
+//
+//            }
+//        }
+        
+        
+        
+//        if (!kpakka.onkoTyhja()) {
+//            Kortti k = kpakka.getKorttiPinosta(kpakka.pinonYlinIndeksi());
+//            if (osuukoKorttiin(k)) {
+//                moneskoKortti = kpakka.pinonYlinIndeksi();
+//            }
+//        }
 
         if (410 < klikattux && klikattux < 460 && 80 < klikattuy && klikattuy < 130) {
+
             pa.otaKorttiPakasta();
             pial.repaint();
-        } else if (360 < klikattux && klikattux < 410 && 80 < klikattuy && klikattuy < 130) {
-            vkortti = pa.valitseKaantoPakanPaalimmainenKortti();
-            System.out.println("" + vkortti);
+
         }
+//        else if (360 < klikattux && klikattux < 410 && 80 < klikattuy && klikattuy < 130) {
+//            vkortti = pa.valitseKaantoPakanPaalimmainenKortti();
+//            System.out.println("" + vkortti);
+//        }
 
 //        source = Pino[x];
 //        
@@ -107,6 +150,28 @@ public class Hiirenkuuntelija extends MouseAdapter {
             if ((pinoja[i].getPinonX()) < klikattux && klikattux <= (pinoja[i].getPinonX() + 55)
                     && (pinoja[i].getPinonY()) < klikattuy) {
                 pinat = pinoja[i];
+                for (int b = 0; b < 7; b++) {
+                    for (int a = pinoja[b].pinonYlinIndeksi(); a >= 0; a--) {
+                        Kortti k = pinoja[b].getKorttiPinosta(a);
+                        if (osuukoKorttiin(k) && k.onkoKuvaYlos()) {
+                            System.out.println("" + k);
+                            System.out.println("" + pinat.getKortinIndeks(k));
+                            moneskoKortti = (pinat.pinonKoko() - pinat.getKortinIndeks(k));
+                            System.out.println("" + moneskoKortti);
+                            break;
+                        }
+
+                    }
+                }
+                break;
+            } else if ((kpakka.getPinonX()) < klikattux && klikattux <= (kpakka.getPinonX() + 55)
+                    && (kpakka.getPinonY()) < klikattuy && klikattuy <= (kpakka.getPinonY() + 80)) {
+                pinat = kpakka;
+                if (!kpakka.onkoTyhja()) {
+
+                    moneskoKortti = 1;
+
+                }
                 break;
             } else {
                 pinat = null;
@@ -115,7 +180,34 @@ public class Hiirenkuuntelija extends MouseAdapter {
         }
     }
 
+    public void mihinPinoonOsutaanNyt() {
 
+        if ((kpakka.getPinonX()) < klikattux && klikattux <= (kpakka.getPinonX() + 55)
+                && (kpakka.getPinonY()) < klikattuy && klikattuy <= (kpakka.getPinonY() + 80)) {
+            pinat = null;
+            return;
+
+        }
+
+        for (int i = 0; i < 7; i++) {
+            if ((pinoja[i].getPinonX()) < klikattux && klikattux <= (pinoja[i].getPinonX() + 55)
+                    && (pinoja[i].getPinonY()) < klikattuy) {
+                pinot = pinoja[i];
+                break;
+            } else {
+                pinot = null;
+            }
+        }
+        for (int i = 0; i < 4; i++) {
+            if ((ypinot[i].getPinonX()) < klikattux && klikattux <= (ypinot[i].getPinonX() + 55)
+                    && (pinoja[i].getPinonY()) > klikattuy) {
+                pinot = ypinot[i];
+                pa.siirraKorttiYlaPinoon(pinat, pinot);
+                break;
+
+            }
+        }
+    }
 
 }
 
