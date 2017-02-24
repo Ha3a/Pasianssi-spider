@@ -5,17 +5,15 @@
  */
 package pasianssi.gui;
 
-import java.awt.Component;
-import java.awt.Point;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import static jdk.nashorn.internal.objects.NativeRegExp.source;
+
 import pasianssi.logiikka.Kortti;
 import pasianssi.logiikka.PeliAlusta;
 import pasianssi.logiikka.Pino;
 
 /**
- *
+ * Luokka hiiren toimintaa varten.
  * @author Harri
  */
 public class Hiirenkuuntelija extends MouseAdapter {
@@ -36,6 +34,13 @@ public class Hiirenkuuntelija extends MouseAdapter {
 
     private Kortti vkortti;
 
+    
+    /**
+     * Konstruktori luokalle.
+     * @param ka ka on Käyttöliittymän ilmentymä
+     * @param pa pa on Piirtoalustan ilmentymä
+     * @param pal pal on PeliAlustan ilmentymä
+     */
     public Hiirenkuuntelija(Kayttoliittyma ka, Piirtoalusta pa, PeliAlusta pal) {
         this.ka = ka;
         pial = pa;
@@ -44,14 +49,15 @@ public class Hiirenkuuntelija extends MouseAdapter {
     }
 
     /**
-     * Tarkista onko klikattu pinon päältä, jos on niin mikä kortti pinosta
+     * Toiminnalisuus kun hiirtä klikataan.
      *
      *
-     * @param e
+     * @param e e on hiiren klikkaus.
      */
     @Override
     public void mousePressed(MouseEvent e) {
         System.out.println("kek");
+        pial.repaint();
 
         pinoja = pa.getAlaPinot();
         kpakka = pa.getKaantoPakka();
@@ -94,28 +100,6 @@ public class Hiirenkuuntelija extends MouseAdapter {
             System.out.println("" + pinat.pinonKoko());
         }
 
-//        for (int i = 0; i < 7; i++) {
-//            for (int a = pinoja[i].pinonYlinIndeksi(); a >= 0; a--) {
-//                Kortti k = pinoja[i].getKorttiPinosta(a);
-//                if (osuukoKorttiin(k) && k.onkoKuvaYlos()) {
-//                    System.out.println("" + k);
-//                    System.out.println("" + pinat.getKortinIndeks(k));
-//                    moneskoKortti = (pinat.pinonKoko() - pinat.getKortinIndeks(k));
-//                    System.out.println("" + moneskoKortti);
-//                    break;
-//                }
-//
-//            }
-//        }
-        
-        
-        
-//        if (!kpakka.onkoTyhja()) {
-//            Kortti k = kpakka.getKorttiPinosta(kpakka.pinonYlinIndeksi());
-//            if (osuukoKorttiin(k)) {
-//                moneskoKortti = kpakka.pinonYlinIndeksi();
-//            }
-//        }
 
         if (410 < klikattux && klikattux < 460 && 80 < klikattuy && klikattuy < 130) {
 
@@ -123,18 +107,15 @@ public class Hiirenkuuntelija extends MouseAdapter {
             pial.repaint();
 
         }
-//        else if (360 < klikattux && klikattux < 410 && 80 < klikattuy && klikattuy < 130) {
-//            vkortti = pa.valitseKaantoPakanPaalimmainenKortti();
-//            System.out.println("" + vkortti);
-//        }
 
-//        source = Pino[x];
-//        
-//        for (Component c : source.getComponents()){
-//            
-//        }
     }
 
+    /**
+     * Katsotaan osuuko x y kortin x y alueelle.
+     * 
+     * @param k Kortti k on annettu kortti
+     * @return Palauttaa true tai false
+     */
     public boolean osuukoKorttiin(Kortti k) {
 
         if ((k.getKortinX() + 9) < klikattux && klikattux <= (k.getKortinX() + 55)
@@ -145,6 +126,9 @@ public class Hiirenkuuntelija extends MouseAdapter {
         return false;
     }
 
+    /**
+     * Testataan osutaanko mihin pinoon klikatessa.
+     */
     public void mihinPinoonOsutaan() {
         for (int i = 0; i < 7; i++) {
             if ((pinoja[i].getPinonX()) < klikattux && klikattux <= (pinoja[i].getPinonX() + 55)
@@ -180,6 +164,9 @@ public class Hiirenkuuntelija extends MouseAdapter {
         }
     }
 
+    /**
+     * Testataan mihin pinoon osutaan seuraavalla klikkauksella.
+     */
     public void mihinPinoonOsutaanNyt() {
 
         if ((kpakka.getPinonX()) < klikattux && klikattux <= (kpakka.getPinonX() + 55)
@@ -210,6 +197,3 @@ public class Hiirenkuuntelija extends MouseAdapter {
     }
 
 }
-
-//return (k.getKortinX()) < klikattux && klikattux > k.getKortinX()
-//                && (k.getKortinY()) < klikattuy && klikattuy > k.getKortinY();

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pasianssi.pasianssi;
+package pasianssi.logiikka;
 
 import java.io.IOException;
 import pasianssi.logiikka.Kortti;

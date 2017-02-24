@@ -64,6 +64,7 @@ public class Kortti {
      * Käytetty konstruktori.
      *
      * @param uudenKortinPakkaArvo uudenKortinPakkaArvo pakkaID kortille
+     * @throws java.io.IOException Heittää IOEXceptionin jos kuvaa ei saatavilla
      */
     public Kortti(final int uudenKortinPakkaArvo) throws IOException {
         if ((uudenKortinPakkaArvo < 1 || uudenKortinPakkaArvo > 52)) {
@@ -116,8 +117,8 @@ public class Kortti {
     public void setKortinY(int y) {
         kortinY = y;
     }
-    
-    public BufferedImage getKuva(){
+
+    public BufferedImage getKuva() {
         return kortinKuva;
     }
 

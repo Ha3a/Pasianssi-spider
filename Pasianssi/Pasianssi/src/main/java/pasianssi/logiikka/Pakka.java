@@ -22,6 +22,7 @@ public class Pakka {
 
     /**
      * Metodi luo 52 korttisen pakan jossa on jokaista korttia yksi.
+     * @throws java.io.IOException Heittää IOEXceptionin jos kuvaa ei saatavilla
      */
     public final void luoPakka() throws IOException {
         if (onkoTyhja()) {

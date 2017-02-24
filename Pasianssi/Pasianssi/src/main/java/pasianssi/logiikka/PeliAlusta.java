@@ -19,6 +19,8 @@ public class PeliAlusta {
     /**
      * Alustaa pelialustan ja luo pinot, kaantopakat, sekä pakan josta kortit
      * jaetaan.
+     *
+     * @throws java.io.IOException Heittää IOEXceptionin jos kuvaa ei saatavilla
      */
     public PeliAlusta() throws IOException {
         alaPinot = new Pino[7];
@@ -43,11 +45,13 @@ public class PeliAlusta {
         kaannettavaPakka = new Pino(410, 50);
         pakka = new Pakka();
         pakka.luoPakka();
-        
 
     }
-    
-    public void sekoitaPakka(){
+
+    /**
+     * Metodi sekoitusta varten.
+     */
+    public void sekoitaPakka() {
         pakka.sekoitaPakka();
     }
 
@@ -107,10 +111,15 @@ public class PeliAlusta {
         return kaantoPakka;
     }
 
+
     public Pino getKaannettavaPakka() {
         return kaannettavaPakka;
     }
 
+    /**
+     * Antaa kortille pinon X Y arvot.
+     * @param pino Pino jonka X Y arvot annetaan
+     */
     public void annaPaalimmaiselleKortillePinonXY(Pino pino) {
         pino.getKorttiPinosta(pino.pinonYlinIndeksi()).setKortinX(pino.getPinonX());
         pino.getKorttiPinosta(pino.pinonYlinIndeksi()).setKortinY(pino.getPinonY());
@@ -199,8 +208,5 @@ public class PeliAlusta {
         }
     }
 
-    public Kortti valitseKaantoPakanPaalimmainenKortti() {
-        return kaantoPakka.getKorttiPinosta(kaantoPakka.pinonYlinIndeksi());
-    }
 
 }

@@ -15,6 +15,8 @@ public class Pino {
 
     /**
      * Luodaan ArrayList.
+     * @param x annetaan pinolle x koordinaatin arvo
+     * @param y annetaan pinolle y koordinaatin arvo
      */
     public Pino(int x, int y) {
         this.pino = new ArrayList<>();
@@ -22,6 +24,9 @@ public class Pino {
         pinonY = y;
     }
 
+    /**
+     * Konstruktori testeille.
+     */
     public Pino() {
         this.pino = new ArrayList<>();
     }
@@ -131,6 +136,11 @@ public class Pino {
         return pino.isEmpty();
     }
 
+    /**
+     * Hakee kortin indeksin pinosta.
+     * @param k halutun koritn indeksi
+     * @return  palauttaa kortin k indeksin
+     */
     public int getKortinIndeks(Kortti k) {
         return pino.indexOf(k);
     }

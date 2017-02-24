@@ -23,6 +23,7 @@ public class Main {
     /**
      * Mainin ja troubleshoottaamisen alku.
      * @param args 
+     * @throws java.io.IOException 
      */
     public static void main(String[] args) throws IOException {  //testi.
 //        Pakka testi = new Pakka();
