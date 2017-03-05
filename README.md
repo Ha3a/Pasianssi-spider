@@ -13,6 +13,6 @@ Pelin voittaa kun on saannut kortit siirrettyä pois pelistä
 
 [Tuntikirjanpito](dokumentaatio/Tuntikirjanpito.md)
 
-[pit-raportti](dokumentaatio/pit-Raportti/index.html)
+[pit-raportti](https://htmlpreview.github.io/?https://github.com/Ha3a/Pasianssi-spider/blob/master/dokumentaatio/pit-Raportti/index.html)
 
-[Checkstyle-raportti](dokumentaatio/checkstyle.html)
+[Checkstyle-raportti](https://htmlpreview.github.io/?https://github.com/Ha3a/Pasianssi-spider/blob/master/dokumentaatio/checkstyle.html)
