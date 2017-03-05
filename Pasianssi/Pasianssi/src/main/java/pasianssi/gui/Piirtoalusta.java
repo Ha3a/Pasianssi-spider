@@ -35,6 +35,7 @@ public class Piirtoalusta extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        this.setBackground(Color.DARK_GRAY);
         super.paintComponent(g);
         try {
             piirraKaantoPino(g);
@@ -60,6 +61,26 @@ public class Piirtoalusta extends JPanel {
         } catch (IOException ex) {
             Logger.getLogger(Piirtoalusta.class.getName()).log(Level.SEVERE, null, ex);
         }
+        if (ohjain.onkoVoitettu()) {
+            try {
+                killScreen(g);
+            } catch (IOException ex) {
+                Logger.getLogger(Piirtoalusta.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
+    /**
+     * Metodi piirtää ns. kill screenin jos peli voitetaan
+     *
+     * @param g Graphics olio
+     * @throws IOException heittää IOExceptionin jos kuva ei saatavilla
+     */
+    public void killScreen(Graphics g) throws IOException {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/voitto.png");
+        BufferedImage bf = ImageIO.read(is);
+        g.drawImage(bf, 25, 100, 450, 450, this);
     }
 
     /*
@@ -142,8 +163,6 @@ public class Piirtoalusta extends JPanel {
             if (a.getKorttiPinosta(i).onkoKuvaYlos()) {
                 Kortti k = a.getKorttiPinosta(i);
                 BufferedImage bf = k.getKuva();
-//                InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + a.getKorttiPinosta(i).getPakkaArvo() + ".png");
-//                BufferedImage bf = ImageIO.read(is);
                 g.drawImage(bf, k.getKortinX(), k.getKortinY(), 50, 50, this);
             } else {
                 InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/korttitausta.png");
@@ -187,10 +206,7 @@ public class Piirtoalusta extends JPanel {
         if (!a.onkoTyhja() && a.getKorttiPinosta(a.pinonYlinIndeksi()).onkoKuvaYlos()) {
 
             BufferedImage bf = a.getKorttiPinosta(a.pinonYlinIndeksi()).getKuva();
-
-//            InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + a.getKorttiPinosta(a.pinonYlinIndeksi()).getPakkaArvo() + ".png");
-//            BufferedImage bf = ImageIO.read(is);
-            g.drawImage(bf, x, y, 50, 50, this);
+            g.drawImage(bf, x, y, 50, 55, this);
         }
 
     }

@@ -12,3 +12,7 @@ Päivä | Tunnit | Kuvaus
 17.02.2017 | 6h | Koodia ja käyttöliittyymää sekä dokumentaatiota
 21.02.2017 | 6h | Hiiren toteuttamista
 24.02.2017 | 5h | Hiiren korjailua ja dokumentointia
+26.02.2017 | 2h | Pientä hienosäätöä
+01.03.2017 | 2h | Lisää hienosäätöä
+04.03.2017 | 2h | Ulkoaasun parantelua
+05.03.2017 | 2h | Checklistin läpikäyntiä

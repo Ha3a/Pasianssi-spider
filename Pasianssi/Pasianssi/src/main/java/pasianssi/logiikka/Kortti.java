@@ -74,8 +74,12 @@ public class Kortti {
         this.maanArvo = pakkaArvoMaanArvoksi(uudenKortinPakkaArvo);
         this.kortinArvo = pakkaArvoKortinArvoksi(uudenKortinPakkaArvo);
 
-        InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + pakkaArvo + ".png");
-        kortinKuva = ImageIO.read(is);
+        kortinKuva = null;
+
+        try (InputStream is = getClass().getClassLoader().getResourceAsStream("kortit/" + pakkaArvo + ".png")) {
+            kortinKuva = ImageIO.read(is);
+            is.close();
+        }
 
     }
 

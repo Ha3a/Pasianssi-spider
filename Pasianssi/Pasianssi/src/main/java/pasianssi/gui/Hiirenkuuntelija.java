@@ -5,8 +5,10 @@
  */
 package pasianssi.gui;
 
+import java.awt.Graphics;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import pasianssi.logiikka.Kortti;
 import pasianssi.logiikka.PeliAlusta;
@@ -14,6 +16,7 @@ import pasianssi.logiikka.Pino;
 
 /**
  * Luokka hiiren toimintaa varten.
+ *
  * @author Harri
  */
 public class Hiirenkuuntelija extends MouseAdapter {
@@ -34,9 +37,9 @@ public class Hiirenkuuntelija extends MouseAdapter {
 
     private Kortti vkortti;
 
-    
     /**
      * Konstruktori luokalle.
+     *
      * @param ka ka on Käyttöliittymän ilmentymä
      * @param pa pa on Piirtoalustan ilmentymä
      * @param pal pal on PeliAlustan ilmentymä
@@ -56,21 +59,15 @@ public class Hiirenkuuntelija extends MouseAdapter {
      */
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("kek");
+
         pial.repaint();
 
         pinoja = pa.getAlaPinot();
         kpakka = pa.getKaantoPakka();
         ypinot = pa.getYlaPinot();
 
-//        int apuri = 7;
-//        for(int i = 0; i < 4; i++){
-//            pinoja[apuri] = ypinot[i];
-//            apuri += +1;
-//        }
         klikattux = e.getX();
         klikattuy = e.getY();
-        System.out.println("" + klikattux + "x " + klikattuy + "y");
 
         if (pinat != null) {
             mihinPinoonOsutaanNyt();
@@ -96,11 +93,6 @@ public class Hiirenkuuntelija extends MouseAdapter {
             pial.repaint();
         }
 
-        if (pinat != null) {
-            System.out.println("" + pinat.pinonKoko());
-        }
-
-
         if (410 < klikattux && klikattux < 460 && 80 < klikattuy && klikattuy < 130) {
 
             pa.otaKorttiPakasta();
@@ -112,7 +104,7 @@ public class Hiirenkuuntelija extends MouseAdapter {
 
     /**
      * Katsotaan osuuko x y kortin x y alueelle.
-     * 
+     *
      * @param k Kortti k on annettu kortti
      * @return Palauttaa true tai false
      */
@@ -138,10 +130,8 @@ public class Hiirenkuuntelija extends MouseAdapter {
                     for (int a = pinoja[b].pinonYlinIndeksi(); a >= 0; a--) {
                         Kortti k = pinoja[b].getKorttiPinosta(a);
                         if (osuukoKorttiin(k) && k.onkoKuvaYlos()) {
-                            System.out.println("" + k);
-                            System.out.println("" + pinat.getKortinIndeks(k));
                             moneskoKortti = (pinat.pinonKoko() - pinat.getKortinIndeks(k));
-                            System.out.println("" + moneskoKortti);
+
                             break;
                         }
 

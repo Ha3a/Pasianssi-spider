@@ -15,6 +15,7 @@ public class PeliAlusta {
     private Pino kaantoPakka;
     private Pino kaannettavaPakka;
     private Pakka pakka;
+    private boolean onkoVoitettu = false;
 
     /**
      * Alustaa pelialustan ja luo pinot, kaantopakat, sekä pakan josta kortit
@@ -111,13 +112,22 @@ public class PeliAlusta {
         return kaantoPakka;
     }
 
-
     public Pino getKaannettavaPakka() {
         return kaannettavaPakka;
     }
 
     /**
+     * Metodi joka palauttaa onkoVoitettu arvon.
+     *
+     * @return palauttaa onkoVoitettu arvon
+     */
+    public boolean onkoVoitettu() {
+        return onkoVoitettu;
+    }
+
+    /**
      * Antaa kortille pinon X Y arvot.
+     *
      * @param pino Pino jonka X Y arvot annetaan
      */
     public void annaPaalimmaiselleKortillePinonXY(Pino pino) {
@@ -163,6 +173,17 @@ public class PeliAlusta {
             mista.poistaTiettyKortti(valittuKortti);
             minne.lisaaPinoon(valittuKortti);
             annaPaalimmaiselleKortillePinonXY(minne);
+            if (minne.pinonKoko() == 13) {
+                int a = 0;
+                for (int i = 0; i < 4; i++) {
+                    if (ylaPinot[i].pinonKoko() == 13) {
+                        a++;
+                    }
+                }
+                if (a == 4) {
+                    onkoVoitettu = true;
+                }
+            }
         }
     }
 
@@ -207,6 +228,5 @@ public class PeliAlusta {
             mista.getKorttiPinosta(mista.pinonYlinIndeksi()).kaannaKortti();
         }
     }
-
 
 }

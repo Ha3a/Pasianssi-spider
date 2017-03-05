@@ -5,6 +5,7 @@
  */
 package pasianssi.gui;
 
+import java.awt.Color;
 import java.awt.Container;
 import java.awt.Dimension;
 import javax.swing.JFrame;
@@ -22,8 +23,7 @@ public class Kayttoliittyma implements Runnable {
     private PeliAlusta peliAlusta;
     private Piirtoalusta palusta;
     private Hiirenkuuntelija hiku;
-    
-    
+
     /**
      * Käyttöliittymän konstruktori jossa luodaan PeliAlusta ilmentymä.
      *
@@ -40,7 +40,7 @@ public class Kayttoliittyma implements Runnable {
      * @param container container piirtämisen säilöntään
      */
     public void luoKomponentit(Container container) {
-        
+
         palusta = new Piirtoalusta(peliAlusta);
         hiku = new Hiirenkuuntelija(this, palusta, peliAlusta);
 
@@ -48,15 +48,13 @@ public class Kayttoliittyma implements Runnable {
 
     }
 
-    
-    
     /*
     * Piirtää peli näytölle
      */
     @Override
     public void run() {
         frame = new JFrame("Pasianssi");
-        frame.setPreferredSize(new Dimension(500, 500));
+        frame.setPreferredSize(new Dimension(500, 700));
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         luoKomponentit(frame.getContentPane());
         frame.pack();
