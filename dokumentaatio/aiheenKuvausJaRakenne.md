@@ -34,4 +34,6 @@ Peli päättyy kun kaikki kortit ovan siirretty ylös pinoihin, jotka menevät maitt
 6. Siirtojen laskeminen
 
 
-![Alt text](lkaavio.png)
+![Alt text](Luokkakaavio.png)
+![Alt text](sekvenssikaavio1.png)
+![Alt text](sekvenssikaavio2.png)
