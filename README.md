@@ -4,6 +4,7 @@ Pasianssi
 Pelissä järjestellään kortteja pinoihin ja avattua piilotetut kortit
 Pelin voittaa kun on saannut kortit siirrettyä pois pelistä
 
+[Käyttöohjeet](dokumentaatio/kayttoohjeet.md)
 
 
 ###Dokumentaatio
